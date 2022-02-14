@@ -1,0 +1,46 @@
+TODA LA EXPLICACION ESTA EN EL VIDEO de FAZT 
+    https://www.youtube.com/watch?v=_RZ-T6TxP7w
+
+IMPORTANTE simbolo backtick `
+
+- abrir un terminal en la caperta API y escribir
+    npm init --y
+
+- Instalar dependencias con 
+    npm install express mongoose morgan dotenv cors colors
+
+- Instalar en modo desarrolo los types de cada dependencia y el ts-node-dev para reiniciar el servidor cada vez que se guarden cambios
+    npm i -D typescript @types/express @types/mongoose @types/morgan @types/cors @types/node ts-node-dev
+
+- en el terminal correr para instalar de forma local el compilador de ts y se creara un archivo tsconfig.json
+    npx tsc --init
+
+- en el archivo tsconfig.json modificar
+    target: es6
+    outDir : "./dist"
+    rootDir : "./src"
+
+- en el package.json eliminar el script/test y poner estos 2
+    "build" : "tsc"
+    "dev": "ts-node-dev src/index.ts"
+
+en el terminal correr para verificar que el servidor este corriendo
+    npm run dev
+
+verificar que mongoDB este funcionando, abriendo otra terminal en windows cmd escribir 
+    mongod --version
+
+Si hay fallas con la DB correr en un terminal mongod para quede escuchando la DB
+
+En el archivo src/config.ts colocar los datos necesarios
+    MONGO_DATABASE: 'XXXXX',
+
+Para definir los datos a almacenar en la DB (modelo) se configuran en el archivo src/routes/Video.ts el cual se le puede cambiar el nombre para los datos de nuestra App
+
+En el archivo videos.controller.ts estan las funciones que usaran cada metodo GET, POST, DELETE, UPDATE en el archivo siguiente, 
+
+En el archivo videos.routes.ts se definen las rutas, metodos y collection que se llaman las fuinciones del archivo anterior,
+
+en el archivo videos.http se prueban los metodos definidos en videos.routes.ts, los metodos que requieren id deben tenerlo despues de la ruta, los que requieren enviar alguna informacion deben describirla
+
+ABRIR archivo de REACT y metodos REACT

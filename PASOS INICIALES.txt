@@ -1,0 +1,11 @@
+TODA LA EXPLICACION ESTA EN EL VIDEO de FAZT (backend)
+    https://www.youtube.com/watch?v=_RZ-T6TxP7w
+
+TODA LA EXPLICACION ESTA EN EL VIDEO de FAZT (frontend) 
+    https://www.youtube.com/watch?v=wOLo-B7mrZM
+
+arrastrar la carpeta API a VS y alli abrir el archivo PASOS.txt
+
+al finalizar el API, abrir el archivo PASOS FRONTEND.txt
+
+IMPORTANTE simbolo backtick `
