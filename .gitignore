@@ -4,4 +4,6 @@ node_modules
 testMethods.http
 .vscode
 ../frontend/node_modules
-
+PASOS BACKEND.txt
+PASOS INICIALES.txt
+.gitignore
