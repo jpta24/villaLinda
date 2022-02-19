@@ -30,35 +30,6 @@ const cnHab = (hab: HabInterface) => {
 	}
 };
 
-/* const funcionRes = ({ eachHab, resFrac }: Props) => {
-	switch (eachHab.status) {
-		case 'libre':
-			return (event: React.MouseEvent<HTMLElement>) => {
-				resFrac(event, eachHab, 'ResFrac');
-			};
-
-		case 'ResFull':
-			return (event: React.MouseEvent<HTMLElement>) => {
-				resFrac(event, eachHab, 'ResMantto');
-			};
-
-		case 'ResFrac':
-			return (event: React.MouseEvent<HTMLElement>) => {
-				resFrac(event, eachHab, 'resMantto');
-			};
-
-		case 'Mantto':
-			return (event: React.MouseEvent<HTMLElement>) => {
-				resFrac(event, eachHab, 'libre');
-			};
-
-		default:
-			return (event: React.MouseEvent<HTMLElement>) => {
-				resFrac(event, eachHab, 'ResFrac');
-			};
-	}
-}; */
-
 const Hab = ({ eachHab, funcionRes }: Props) => {
 	return (
 		<div className='col-md my-2 habCard '>

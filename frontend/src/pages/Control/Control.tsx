@@ -26,6 +26,7 @@ const Control = () => {
 	) => {
 		e.preventDefault();
 		hab.status = reserv;
+		hab.hrIn = new Date();
 		await habServices.updateHab(hab);
 		loadHabs();
 		console.log(habs);
@@ -53,16 +54,6 @@ const Control = () => {
 		}
 	};
 
-	/* const resMantto = async (
-		e: React.MouseEvent<HTMLElement>,
-		hab: HabInterface
-	) => {
-		e.preventDefault();
-		hab.status = 'Mantto';
-		await habServices.updateHab(hab);
-		loadHabs();
-	}; */
-
 	const habitacionesSencillas = habs.filter((hab: HabInterface) => {
 		return hab.priceFraction === 30;
 	});
@@ -70,11 +61,6 @@ const Control = () => {
 	const habitacionesSuites = habs.filter((hab: HabInterface) => {
 		return hab.priceFraction === 50;
 	});
-
-	/* const resFrac = (e: HabInterface) => {
-		e.status = 'ResFrac';
-		console.log(habs);
-	}; */
 
 	return (
 		<div className='container'>
