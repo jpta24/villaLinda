@@ -20,29 +20,11 @@ export const getHabs: RequestHandler = async (req, res) => {
 	}
 };
 
-export const getHab: RequestHandler = async (req, res) => {
-	try {
-		const habFound = await Habitaciones.findById(req.params.id);
-		return res.json(habFound);
-	} catch (error) {
-		return res.json('Habitación no encontrada').status(204);
-	}
-};
-
-export const deleteHab: RequestHandler = async (req, res) => {
-	try {
-		const habFound = await Habitaciones.findByIdAndDelete(req.params.id);
-		return res.json(habFound);
-	} catch (error) {
-		return res.json('Habitación no encontrada').status(204);
-	}
-};
-
 export const updateHab: RequestHandler = async (req, res) => {
 	try {
 		const habUpdated = await Habitaciones.findByIdAndUpdate(
-			req.params.id,
-			req.body,
+			req.body._id,
+			{ status: req.body.status },
 			{ new: true }
 		);
 		return res.json(habUpdated);
@@ -50,3 +32,21 @@ export const updateHab: RequestHandler = async (req, res) => {
 		return res.json('Habitación no encontrada').status(204);
 	}
 };
+
+/* export const getHab: RequestHandler = async (req, res) => {
+	try {
+		const habFound = await Habitaciones.findById(req.params.id);
+		return res.json(habFound);
+	} catch (error) {
+		return res.json('Habitación no encontrada').status(204);
+	}
+}; */
+
+/* export const deleteHab: RequestHandler = async (req, res) => {
+	try {
+		const habFound = await Habitaciones.findByIdAndDelete(req.params.id);
+		return res.json(habFound);
+	} catch (error) {
+		return res.json('Habitación no encontrada').status(204);
+	}
+}; */

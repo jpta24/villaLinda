@@ -22,6 +22,10 @@ export const getHabs = async () => {
 	return await axios.get<HabInterface[]>(API);
 };
 
+export const updateHab = async (hab: HabInterface) => {
+	return await axios.put<HabInterface>(API, hab);
+};
+
 /* export const deleteKeyWord = async (id: string) => {
 	return await axios.delete<UrlInterface>(`${API}/${id}`);
 };

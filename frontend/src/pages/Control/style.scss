@@ -1,8 +1,78 @@
+h3,
+h2 {
+	color: azure;
+	font-weight: bold;
+}
+
 .hab {
-	border: 2px double black;
+	border: 1px double black;
 	border-radius: 20px;
 	-webkit-border-radius: 20px;
 	-moz-border-radius: 20px;
 	-ms-border-radius: 20px;
 	-o-border-radius: 20px;
+	width: 113px;
+	height: 70px;
+	outline-style: groove;
+}
+
+.hab:hover {
+	box-shadow: 5px 10px 20px 1px rgb(34, 34, 34) !important;
+	transition: all 0.1s linear !important;
+	-webkit-transition: all 0.1s linear !important;
+	-moz-transition: all 0.1s linear !important;
+	-ms-transition: all 0.1s linear !important;
+	-o-transition: all 0.1s linear !important;
+	transform: scale(1.05);
+	-webkit-transform: scale(1.05);
+	-moz-transform: scale(1.05);
+	-ms-transform: scale(1.05);
+	-o-transform: scale(1.05);
+}
+
+.habLibre {
+	background: rgb(17, 151, 50) !important;
+}
+.habLibre:hover {
+	background: rgb(12, 105, 35) !important;
+}
+
+.habFrac {
+	background: rgb(175, 60, 45) !important;
+}
+
+.habFrac:hover {
+	background: rgb(179, 38, 20) !important;
+}
+
+.habMantto {
+	background: rgb(213, 216, 21) !important;
+}
+
+.habMantto:hover {
+	background: rgb(155, 156, 62) !important;
+}
+
+.sb2 {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+.suitebtn {
+	width: 25px;
+	height: 25px;
+	border: 1px solid white;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+	background-color: #198754;
+}
+.suitebtn:hover {
+	background-color: #105334;
+}
+
+.habCard {
+	width: 120px;
 }

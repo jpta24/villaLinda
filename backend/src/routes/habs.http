@@ -21,11 +21,16 @@ Content-Type: application/json
 DELETE {{api}}/60a7daaf00205b4384ecdf
 
 ### actualizar un video
-PUT {{api}}/62
+PUT {{api}}
 Content-Type: application/json
 
 {
-    "title": "MERN STACK & Typescript (Backend)"
+    "_id": "621150e736e2f017c65fc4b3",
+    "number": 2,
+    "status": "libre",
+    "priceFraction": 50,
+    "priceFull": 60,
+    "timesRented": 0
 }
 ###
 GET https://api.openweathermap.org/data/2.5/weather?q=Berlin&appid=228c7ee5dde339838102bc6cbbd058ba&units=metric
