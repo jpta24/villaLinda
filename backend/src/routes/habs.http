@@ -25,7 +25,7 @@ PUT {{api}}
 Content-Type: application/json
 
 {
-    "_id": "621150e736e2f017c65fc4b3",
+    "_id": "621150f836e2f017c65fc4bf",
     "number": 2,
     "status": "libre",
     "priceFraction": 50,

@@ -27,8 +27,8 @@ const Control = () => {
 		e.preventDefault();
 		hab.status = reserv;
 		await habServices.updateHab(hab);
-
 		loadHabs();
+		console.log(habs);
 	};
 
 	const funcionRes = (
@@ -45,7 +45,7 @@ const Control = () => {
 			case 'ResFrac':
 				return resFrac(event, eachHab, 'ResMantto');
 
-			case 'Mantto':
+			case 'ResMantto':
 				return resFrac(event, eachHab, 'libre');
 
 			default:
