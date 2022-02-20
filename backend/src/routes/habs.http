@@ -2,9 +2,6 @@
 ### ruta inicial /videos
 GET {{api}}
 
-### solicitud de un solo video por id
-GET {{api}}/60a7cd6890f1c6441c998381
-
 ### crear un video
 POST  {{api}}
 Content-Type: application/json
@@ -21,9 +18,6 @@ Content-Type: application/json
     "hrMantto": null
 }
 
-### borrar un video
-DELETE {{api}}/60a7daaf00205b4384ecdf
-
 ### actualizar un video
 PUT {{api}}
 Content-Type: application/json
@@ -38,8 +32,9 @@ Content-Type: application/json
     "hrOut": null,
     "hrIn": null
 }
-###
-GET https://api.openweathermap.org/data/2.5/weather?q=Berlin&appid=228c7ee5dde339838102bc6cbbd058ba&units=metric
 
-###
-GET https://www.amazon.com/dp/B07QV2V7PR?%2AVersion%2A=1&%2Aentries%2A=0&ie=UTF8&language=es_US&viewID=
+### solicitud de un solo video por id
+GET {{api}}/60a7cd6890f1c6441c998381
+
+### borrar un video
+DELETE {{api}}/60a7daaf00205b4384ecdf

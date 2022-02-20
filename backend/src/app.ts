@@ -4,7 +4,8 @@ import cors from 'cors'; // permite conexion con otros servidores
 
 import config from './config';
 
-import habRoutes from './routes/Habitaciones.routes';
+import habRoutes from './routes/Habitaciones/Habitaciones.routes';
+import extraRoutes from './routes/ExtraMerc/Extra.routes';
 
 const app = express();
 
@@ -16,5 +17,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false })); // para entender los campos que vienen en la url
 
 app.use(habRoutes);
+app.use(extraRoutes);
 
 export default app;
