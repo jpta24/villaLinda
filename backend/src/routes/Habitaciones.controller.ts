@@ -22,8 +22,6 @@ export const getHabs: RequestHandler = async (req, res) => {
 
 export const updateHab: RequestHandler = async (req, res) => {
 	try {
-		console.log(req.body.status);
-
 		if (req.body.status === 'libre') {
 			req.body.hrIn = new Date();
 			req.body.status = 'ResFrac';

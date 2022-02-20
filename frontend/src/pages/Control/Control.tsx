@@ -31,7 +31,6 @@ const Control = () => {
 		) {
 			hab.status = string;
 		}
-		console.log(hab.status);
 		await habServices.updateHab(hab);
 		loadHabs();
 	};

@@ -56,14 +56,20 @@ const textParagraph = (hab: HabInterface) => {
 			let hour = d.getHours() + 4;
 			let min = d.getMinutes();
 
-			return hour + ':' + (min < 10 ? '0' + min : min);
+			return (
+				(hour > 23 ? hour - 24 : hour) + ':' + (min < 10 ? '0' + min : min)
+			);
 
 		case 'ResMantto':
 			const d2 = new Date(String(hab.hrOut));
 			let hour2 = d2.getHours() + 1;
 			let min2 = d2.getMinutes();
 
-			return hour2 + ':' + (min2 < 10 ? '0' + min2 : min2);
+			return (
+				(hour2 > 23 ? hour2 - 24 : hour2) +
+				':' +
+				(min2 < 10 ? '0' + min2 : min2)
+			);
 
 		default:
 			return 'habLibre';
