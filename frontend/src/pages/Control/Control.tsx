@@ -21,37 +21,12 @@ const Control = () => {
 
 	const resFrac = async (
 		e: React.MouseEvent<HTMLElement>,
-		hab: HabInterface,
-		reserv: string
+		hab: HabInterface
 	) => {
 		e.preventDefault();
-		hab.status = reserv;
-		hab.hrIn = new Date();
 		await habServices.updateHab(hab);
 		loadHabs();
-		console.log(habs);
-	};
-
-	const funcionRes = (
-		event: React.MouseEvent<HTMLElement>,
-		eachHab: HabInterface
-	) => {
-		switch (eachHab.status) {
-			case 'libre':
-				return resFrac(event, eachHab, 'ResFrac');
-
-			case 'ResFull':
-				return resFrac(event, eachHab, 'ResMantto');
-
-			case 'ResFrac':
-				return resFrac(event, eachHab, 'ResMantto');
-
-			case 'ResMantto':
-				return resFrac(event, eachHab, 'libre');
-
-			default:
-				return resFrac(event, eachHab, 'ResFrac');
-		}
+		console.log(hab);
 	};
 
 	const habitacionesSencillas = habs.filter((hab: HabInterface) => {
@@ -71,11 +46,7 @@ const Control = () => {
 					<div className='row mx-auto'>
 						{habitacionesSencillas.map((eachHab: HabInterface) => {
 							return (
-								<Hab
-									eachHab={eachHab}
-									key={eachHab.number}
-									funcionRes={funcionRes}
-								/>
+								<Hab eachHab={eachHab} key={eachHab.number} resFrac={resFrac} />
 							);
 						})}
 					</div>
@@ -85,11 +56,7 @@ const Control = () => {
 					<div className='row mx-auto '>
 						{habitacionesSuites.map((eachHab: HabInterface) => {
 							return (
-								<Hab
-									eachHab={eachHab}
-									key={eachHab.number}
-									funcionRes={funcionRes}
-								/>
+								<Hab eachHab={eachHab} key={eachHab.number} resFrac={resFrac} />
 							);
 						})}
 					</div>
@@ -99,11 +66,7 @@ const Control = () => {
 					<div className='row mx-auto '>
 						{habitacionesSuites.map((eachHab: HabInterface) => {
 							return (
-								<Hab
-									eachHab={eachHab}
-									key={eachHab.number}
-									funcionRes={funcionRes}
-								/>
+								<Hab eachHab={eachHab} key={eachHab.number} resFrac={resFrac} />
 							);
 						})}
 					</div>

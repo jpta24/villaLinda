@@ -10,11 +10,15 @@ POST  {{api}}
 Content-Type: application/json
 
 {
-    "number": 22,
+    "_id": "621150c836e2f017c65fc4aa",
+    "number": 2,
     "status": "libre",
-    "priceFraction": 50,
-    "priceFull": 60,
-    "timesRented": 0
+    "priceFraction": 30,
+    "priceFull": 40,
+    "timesRented": 0,    
+    "hrOut": null,
+    "hrIn": null,
+    "hrMantto": null
 }
 
 ### borrar un video
@@ -25,12 +29,14 @@ PUT {{api}}
 Content-Type: application/json
 
 {
-    "_id": "621150f836e2f017c65fc4bf",
-    "number": 2,
-    "status": "libre",
+    "_id": "6211513336e2f017c65fc4e3",
+    "number": 22,
+    "status": "ResMantto",
     "priceFraction": 50,
     "priceFull": 60,
-    "timesRented": 0
+    "timesRented": 0,
+    "hrOut": null,
+    "hrIn": null
 }
 ###
 GET https://api.openweathermap.org/data/2.5/weather?q=Berlin&appid=228c7ee5dde339838102bc6cbbd058ba&units=metric

@@ -22,9 +22,21 @@ export const getHabs: RequestHandler = async (req, res) => {
 
 export const updateHab: RequestHandler = async (req, res) => {
 	try {
+		if (req.body.status === 'libre') {
+			req.body.hrIn = new Date();
+			req.body.status = 'ResFrac';
+		} else if (req.body.status === 'ResFrac' || req.body.status === 'ResFull') {
+			req.body.hrOut = new Date();
+			req.body.status = 'ResMantto';
+			req.body.timesRented++;
+		} else if (req.body.status === 'ResMantto') {
+			req.body.status = 'libre';
+			req.body.hrIn = null;
+			req.body.hrOut = null;
+		}
 		const habUpdated = await Habitaciones.findByIdAndUpdate(
 			req.body._id,
-			{ status: req.body.status },
+			req.body,
 			{ new: true }
 		);
 		return res.json(habUpdated);
