@@ -5,7 +5,11 @@ import '../pages/Control/style.scss';
 
 interface Props {
 	eachHab: HabInterface;
-	resFrac: (e: React.MouseEvent<HTMLElement>, hab: HabInterface) => void;
+	resFrac: (
+		e: React.MouseEvent<HTMLElement>,
+		hab: HabInterface,
+		string: string
+	) => void;
 }
 
 const cnHab = (hab: HabInterface) => {
@@ -24,6 +28,19 @@ const cnHab = (hab: HabInterface) => {
 
 		default:
 			return 'habLibre';
+	}
+};
+
+const cnHabFull = (hab: HabInterface) => {
+	switch (hab.status) {
+		case 'ResFull':
+			return 'habFull';
+
+		case 'ResMantto':
+			return 'habManttoHidden';
+
+		default:
+			return '';
 	}
 };
 const textParagraph = (hab: HabInterface) => {
@@ -59,7 +76,7 @@ const Hab = ({ eachHab, resFrac }: Props) => {
 			<div
 				className={`card-body px-auto py-1 hab mx-auto ${cnHab(eachHab)}`}
 				onClick={(event: React.MouseEvent<HTMLElement>) => {
-					resFrac(event, eachHab);
+					resFrac(event, eachHab, 'libre');
 				}}
 			>
 				<div className='row'>
@@ -67,7 +84,12 @@ const Hab = ({ eachHab, resFrac }: Props) => {
 						<h3 className='my-0 text-center'>{eachHab.number}</h3>
 					</div>
 					<div className='col-6 sb2 justify-content-center px-2'>
-						<div className='suitebtn py-auto'></div>
+						<div
+							className={`suitebtn py-auto ${cnHabFull(eachHab)}`}
+							onClick={(event: React.MouseEvent<HTMLElement>) => {
+								resFrac(event, eachHab, 'full');
+							}}
+						></div>
 					</div>
 				</div>
 

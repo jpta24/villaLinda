@@ -21,12 +21,19 @@ const Control = () => {
 
 	const resFrac = async (
 		e: React.MouseEvent<HTMLElement>,
-		hab: HabInterface
+		hab: HabInterface,
+		string: string
 	) => {
 		e.preventDefault();
+		if (
+			hab.status === 'libre' ||
+			(hab.status === 'ResFrac' && string === 'full')
+		) {
+			hab.status = string;
+		}
+		console.log(hab.status);
 		await habServices.updateHab(hab);
 		loadHabs();
-		console.log(hab);
 	};
 
 	const habitacionesSencillas = habs.filter((hab: HabInterface) => {

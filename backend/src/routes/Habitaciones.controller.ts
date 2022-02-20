@@ -22,9 +22,14 @@ export const getHabs: RequestHandler = async (req, res) => {
 
 export const updateHab: RequestHandler = async (req, res) => {
 	try {
+		console.log(req.body.status);
+
 		if (req.body.status === 'libre') {
 			req.body.hrIn = new Date();
 			req.body.status = 'ResFrac';
+		} else if (req.body.status === 'full') {
+			req.body.hrIn = new Date();
+			req.body.status = 'ResFull';
 		} else if (req.body.status === 'ResFrac' || req.body.status === 'ResFull') {
 			req.body.hrOut = new Date();
 			req.body.status = 'ResMantto';
