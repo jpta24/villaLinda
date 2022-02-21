@@ -2,7 +2,7 @@ import { RequestHandler } from 'express';
 import ExtraMerc from './Extra';
 
 export const createExtra: RequestHandler = async (req, res) => {
-	const extraFound = await ExtraMerc.findOne({ number: req.body.name });
+	const extraFound = await ExtraMerc.findOne({ name: req.body.name });
 	if (extraFound)
 		return res.status(301).json({ message: 'Estae Extra ya existe' });
 

@@ -3,11 +3,11 @@ const router = Router();
 
 import * as extraCtrl from './Extra.controller';
 
-router.get('/extras', extraCtrl.getExtras);
+router.get('/extramercs', extraCtrl.getExtras);
 
-router.post('/extras', extraCtrl.createExtra);
+router.post('/extramercs', extraCtrl.createExtra);
 
-router.put('/extras', extraCtrl.updateExtra);
+router.put('/extramercs', extraCtrl.updateExtra);
 
 //router.get('/habitaciones/:id', extraCtrl.getExtra);
 

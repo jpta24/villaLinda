@@ -3,6 +3,7 @@ import * as habServices from '../../Services/HabServices';
 import { HabInterface } from '../../Services/HabInterface';
 import '../Control/style.scss';
 import Hab from '../../components/Hab';
+import ExtraCont from '../../components/ExtraCont';
 
 const Control = () => {
 	const [habs, setHabs] = useState<HabInterface[]>([]);
@@ -70,13 +71,7 @@ const Control = () => {
 				<div className='col-md-1'></div>
 				<div className='col-md-2'>
 					<h3 className='my-3 text-center'>Extras</h3>
-					<div className='row mx-auto '>
-						{habitacionesSuites.map((eachHab: HabInterface) => {
-							return (
-								<Hab eachHab={eachHab} key={eachHab.number} resFrac={resFrac} />
-							);
-						})}
-					</div>
+					<ExtraCont />
 				</div>
 			</div>
 			<div className='row my-4 justify-content-center'>

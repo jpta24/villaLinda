@@ -1,0 +1,35 @@
+@api= http://localhost:5400/extramercs
+### ruta inicial /videos
+GET {{api}}
+
+### crear un video
+POST  {{api}}
+Content-Type: application/json
+
+{
+    "name": "Refrescos",
+    "qty": 10,
+    "priceBuy": 2,
+    "priceSell": 5
+}
+
+### actualizar un video
+PUT {{api}}
+Content-Type: application/json
+
+{
+    "_id": "6211513336e2f017c65fc4e3",
+    "number": 22,
+    "status": "ResMantto",
+    "priceFraction": 50,
+    "priceFull": 60,
+    "timesRented": 0,
+    "hrOut": null,
+    "hrIn": null
+}
+
+### solicitud de un solo video por id
+GET {{api}}/60a7cd6890f1c6441c998381
+
+### borrar un video
+DELETE {{api}}/60a7daaf00205b4384ecdf

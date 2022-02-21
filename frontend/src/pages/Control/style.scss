@@ -101,3 +101,36 @@ p {
 .habCard {
 	width: 120px;
 }
+
+.extraDisp {
+	background-color: rgb(28, 245, 245);
+
+	p {
+		color: black;
+	}
+}
+
+.extraAgot {
+	background-color: rgb(235, 28, 21);
+}
+.icon {
+	max-height: 35px;
+}
+
+.formExtra {
+	max-height: 35px !important;
+	display: block;
+	width: 100%;
+	padding: 0.001rem 0.75rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	-webkit-appearance: none;
+	appearance: none;
+	border-radius: 0.25rem;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
