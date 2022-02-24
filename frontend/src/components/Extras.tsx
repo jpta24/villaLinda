@@ -11,50 +11,43 @@ type InputChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 interface Props {
 	eachExtra: ExtraInterface;
 	buyExtra: (e: React.MouseEvent<HTMLElement>, extra: ExtraInterface) => void;
-	/* resFrac: (
-		e: React.MouseEvent<HTMLElement>,
-		hab: HabInterface,
-		string: string
-	) => void; */
 }
 
 interface CantInterface {
 	cant: number;
 }
 
-const funtIcon = (string: string) => {
-	switch (string) {
-		case 'Preservativos':
-			return condoms;
-
-		case 'Cervezas':
-			return beers;
-
-		case 'Refrescos':
-			return cokes;
-
-		default:
-			break;
-	}
-};
-
-const cnDisp = (number: number) => {
-	switch (number) {
-		case (number = 0):
-			return 'extraAgot';
-
-		default:
-			return 'extraDisp';
-	}
-};
-
-const initialState = {
-	cant: 1,
-};
-
-/*  
-${cnHabFull(eachHab)}*/
 const Extras = ({ eachExtra, buyExtra }: Props) => {
+	const funtIcon = (string: string) => {
+		switch (string) {
+			case 'Preservativos':
+				return condoms;
+
+			case 'Cervezas':
+				return beers;
+
+			case 'Refrescos':
+				return cokes;
+
+			default:
+				break;
+		}
+	};
+
+	const cnDisp = (number: number) => {
+		switch (number) {
+			case (number = 0):
+				return 'extraAgot';
+
+			default:
+				return 'extraDisp';
+		}
+	};
+
+	const initialState = {
+		cant: 1,
+	};
+
 	const [cantState, setCantState] = useState<CantInterface>(initialState);
 
 	const handleInputChange = (e: InputChange) => {
@@ -67,19 +60,27 @@ const Extras = ({ eachExtra, buyExtra }: Props) => {
 		return extra;
 	};
 
+	const url = window.location.href;
 	return (
 		<div className='col-md my-2 habCard '>
 			<div
 				className={`card-body px-auto py-1 hab mx-auto ${cnDisp(
 					eachExtra.qty
 				)}`}
-				onClick={(event: React.MouseEvent<HTMLElement>) => {
-					if (eachExtra.qty - cantState.cant > -1) {
-						newQty(eachExtra, cantState);
-						buyExtra(event, eachExtra);
-						setCantState(initialState);
-					}
-				}}
+				onClick={
+					url.search('control-habs') > 0
+						? (event: React.MouseEvent<HTMLElement>) => {
+								if (eachExtra.qty - cantState.cant > -1) {
+									newQty(eachExtra, cantState);
+									buyExtra(event, eachExtra);
+									setCantState(initialState);
+								}
+						  }
+						: (event: React.MouseEvent<HTMLElement>) => {
+								event.stopPropagation();
+								event.nativeEvent.stopImmediatePropagation();
+						  }
+				}
 			>
 				<div className='row'>
 					<div className='col-6'>

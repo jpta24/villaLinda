@@ -16,6 +16,7 @@ ReactDOM.render(
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/control-habs' element={<Control />} />
+				<Route path='/admin-habs' element={<Control />} />
 			</Routes>
 		</BrowserRouter>
 	</React.StrictMode>,

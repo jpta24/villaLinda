@@ -18,6 +18,7 @@ p {
 	width: 113px;
 	height: 70px;
 	outline-style: groove;
+	position: relative;
 }
 
 .hab:hover {
@@ -133,4 +134,39 @@ p {
 	appearance: none;
 	border-radius: 0.25rem;
 	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.deleteCard {
+	font-weight: 'bold';
+	font-size: small;
+	max-width: 22px;
+	max-height: 22px;
+	padding: 0px 2px 1px 6px;
+	border: 1px solid #000000;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+	background-color: #ced4da;
+	position: absolute;
+	bottom: 6px;
+	left: 6px;
+}
+
+.deleteCard:hover {
+	font-weight: bolder;
+	background-color: #81868b;
+	box-shadow: 5px 10px 20px 1px rgb(34, 34, 34) !important;
+	transition: all 0.1s linear !important;
+	-webkit-transition: all 0.1s linear !important;
+	-moz-transition: all 0.1s linear !important;
+	-ms-transition: all 0.1s linear !important;
+	-o-transition: all 0.1s linear !important;
+	transform: scale(1.05);
+	-webkit-transform: scale(1.05);
+	-moz-transform: scale(1.05);
+	-ms-transform: scale(1.05);
+	-o-transform: scale(1.05);
+	cursor: pointer;
 }

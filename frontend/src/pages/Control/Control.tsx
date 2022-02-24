@@ -44,10 +44,15 @@ const Control = () => {
 		return hab.priceFraction === 50;
 	});
 
+	const url = window.location.href;
 	return (
 		<div className='container'>
 			<div className='row'>
-				<h2 className='my-2 text-center'>CONTROL DE HABITACIONES</h2>
+				<h2 className='my-2 text-center'>
+					{url.search('control-habs') > 0
+						? 'CONTROL DE HABITACIONES'
+						: 'ADMINISTRACION DE HABITACIONES'}
+				</h2>
 				<div className='col-md-6'>
 					<h3 className='my-3 text-center'>Sencillas</h3>
 					<div className='row mx-auto'>
