@@ -22,21 +22,6 @@ export const getExtras: RequestHandler = async (req, res) => {
 
 export const updateExtra: RequestHandler = async (req, res) => {
 	try {
-		/* if (req.body.status === 'libre') {
-			req.body.hrIn = new Date();
-			req.body.status = 'ResFrac';
-		} else if (req.body.status === 'full') {
-			req.body.hrIn = new Date();
-			req.body.status = 'ResFull';
-		} else if (req.body.status === 'ResFrac' || req.body.status === 'ResFull') {
-			req.body.hrOut = new Date();
-			req.body.status = 'ResMantto';
-			req.body.timesRented++;
-		} else if (req.body.status === 'ResMantto') {
-			req.body.status = 'libre';
-			req.body.hrIn = null;
-			req.body.hrOut = null;
-		} */
 		const extraUpdated = await ExtraMerc.findByIdAndUpdate(
 			req.body._id,
 			req.body,

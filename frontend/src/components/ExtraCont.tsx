@@ -18,12 +18,26 @@ const ExtraCont = () => {
 		loadExtras();
 	}, []);
 
-	console.log(extras);
+	const buyExtra = async (
+		e: React.MouseEvent<HTMLElement>,
+		extra: ExtraInterface
+	) => {
+		e.preventDefault();
+
+		await extraServices.updateExtra(extra);
+		loadExtras();
+	};
 
 	return (
 		<div className='row mx-auto '>
 			{extras.map((eachExtra: ExtraInterface) => {
-				return <Extra eachExtra={eachExtra} key={eachExtra._id} />;
+				return (
+					<Extra
+						eachExtra={eachExtra}
+						key={eachExtra._id}
+						buyExtra={buyExtra}
+					/>
+				);
 			})}
 		</div>
 	);

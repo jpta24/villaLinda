@@ -10,6 +10,7 @@ type InputChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
 interface Props {
 	eachExtra: ExtraInterface;
+	buyExtra: (e: React.MouseEvent<HTMLElement>, extra: ExtraInterface) => void;
 	/* resFrac: (
 		e: React.MouseEvent<HTMLElement>,
 		hab: HabInterface,
@@ -53,11 +54,17 @@ const initialState = {
 
 /*  
 ${cnHabFull(eachHab)}*/
-const Extras = ({ eachExtra }: Props) => {
+const Extras = ({ eachExtra, buyExtra }: Props) => {
 	const [cantState, setCantState] = useState<CantInterface>(initialState);
 
 	const handleInputChange = (e: InputChange) => {
 		setCantState({ ...cantState, [e.target.name]: e.target.value });
+	};
+
+	const newQty = (extra: ExtraInterface, cantState: CantInterface) => {
+		extra.qty = extra.qty - cantState.cant;
+		console.log(extra);
+		return extra;
 	};
 
 	return (
@@ -67,7 +74,11 @@ const Extras = ({ eachExtra }: Props) => {
 					eachExtra.qty
 				)}`}
 				onClick={(event: React.MouseEvent<HTMLElement>) => {
-					/* resFrac(event, eachHab, 'libre'); */
+					if (eachExtra.qty - cantState.cant > -1) {
+						newQty(eachExtra, cantState);
+						buyExtra(event, eachExtra);
+						setCantState(initialState);
+					}
 				}}
 			>
 				<div className='row'>
@@ -82,6 +93,10 @@ const Extras = ({ eachExtra }: Props) => {
 							className='form-control m-2 formExtra'
 							onChange={handleInputChange} // maneja los cambios en el input con esa funcion
 							value={cantState.cant}
+							onClick={(event: React.MouseEvent<HTMLElement>) => {
+								event.stopPropagation();
+								event.nativeEvent.stopImmediatePropagation();
+							}}
 						/>
 					</div>
 				</div>
