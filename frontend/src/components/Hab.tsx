@@ -93,19 +93,6 @@ const Hab = ({ eachHab, resFrac }: Props) => {
 				}
 			>
 				<div className='row'>
-					{url.search('control-habs') > 0 ? (
-						''
-					) : (
-						<span
-							className='text-danger deleteCard'
-							/* onClick={() => {
-							eachvideo._id && // (si video._id existe entonce && ejecuta la siguente funcion) // salia un error pq el _id era opcional _id?
-								handleDelete(eachvideo._id);
-						}} */
-						>
-							X
-						</span>
-					)}
 					<div className='col-6'>
 						<h3 className='my-0 text-center'>{eachHab.number}</h3>
 					</div>
