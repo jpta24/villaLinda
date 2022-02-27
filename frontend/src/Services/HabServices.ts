@@ -4,19 +4,6 @@ import { HabInterface } from './HabInterface';
 import { AsinsConfirmedInterface } from './AsinsConfirmedInterface'; */
 
 const API = 'http://localhost:5400/habitaciones';
-/* const API2 = 'http://localhost:8000/asinsconfirmed';
-const API3 = 'http://localhost:8000/asins'; */
-
-/* export const updateKeyWord = async (
-	obj: UrlInterface,
-	responseCallback?: string
-) => {
-	return await axios.put<UrlInterface>(API, obj);
-};
-
-export const createKeyWord = async (obj: UrlInterface) => {
-	return await axios.post(API, obj);
-}; */
 
 export const getHabs = async () => {
 	return await axios.get<HabInterface[]>(API);
@@ -24,6 +11,14 @@ export const getHabs = async () => {
 
 export const updateHab = async (hab: HabInterface) => {
 	return await axios.put<HabInterface>(API, hab);
+};
+
+export const getHab = async (id: string) => {
+	return await axios.get<HabInterface>(`${API}/${id}`);
+};
+
+export const updateHabData = async (id: string, hab: HabInterface) => {
+	return await axios.put<HabInterface>(`${API}/${id}`, hab);
 };
 
 /* export const deleteKeyWord = async (id: string) => {

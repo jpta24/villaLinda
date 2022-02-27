@@ -2,6 +2,7 @@ import React from 'react';
 import { HabInterface } from '../Services/HabInterface';
 
 import '../pages/Control/style.scss';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
 	eachHab: HabInterface;
@@ -77,6 +78,8 @@ const Hab = ({ eachHab, resFrac }: Props) => {
 		}
 	};
 	const url = window.location.href;
+
+	const history = useNavigate();
 	return (
 		<div className='col-md my-2 habCard '>
 			<div
@@ -86,9 +89,8 @@ const Hab = ({ eachHab, resFrac }: Props) => {
 						? (event: React.MouseEvent<HTMLElement>) => {
 								resFrac(event, eachHab, 'libre');
 						  }
-						: (event: React.MouseEvent<HTMLElement>) => {
-								event.stopPropagation();
-								event.nativeEvent.stopImmediatePropagation();
+						: () => {
+								history(`/admin-habs/${eachHab._id}`);
 						  }
 				}
 			>
@@ -104,9 +106,8 @@ const Hab = ({ eachHab, resFrac }: Props) => {
 									? (event: React.MouseEvent<HTMLElement>) => {
 											resFrac(event, eachHab, 'full');
 									  }
-									: (event: React.MouseEvent<HTMLElement>) => {
-											event.stopPropagation();
-											event.nativeEvent.stopImmediatePropagation();
+									: () => {
+											history(`/admin-habs/${eachHab._id}`);
 									  }
 							}
 						></div>

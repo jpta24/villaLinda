@@ -9,7 +9,9 @@ router.post('/habitaciones', habCtrl.createHab);
 
 router.put('/habitaciones', habCtrl.updateHab);
 
-//router.get('/habitaciones/:id', habCtrl.getHab);
+router.get('/habitaciones/:id', habCtrl.getHab);
+
+router.put('/habitaciones/:id', habCtrl.updateHabData);
 
 //router.delete('/habitaciones/:id', habCtrl.deleteHab);
 

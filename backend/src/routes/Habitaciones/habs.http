@@ -34,7 +34,25 @@ Content-Type: application/json
 }
 
 ### solicitud de un solo video por id
-GET {{api}}/60a7cd6890f1c6441c998381
+GET {{api}}/620aba2ffdac2ec43268607f
 
 ### borrar un video
 DELETE {{api}}/60a7daaf00205b4384ecdf
+
+
+### actualizar un video
+PUT {{api}}/620aba2ffdac2ec43268607f
+Content-Type: application/json
+
+{
+    "_id": "620aba2ffdac2ec43268607f",
+    "number": 2,
+    "status": "libre",
+    "priceFraction": 30,
+    "priceFull": 40,
+    "timesRented": 1,
+    "createdAt": "2022-02-14T20:23:11.895Z",
+    "updatedAt": "2022-02-24T22:31:05.159Z",
+    "hrIn": null,
+    "hrOut": null
+  }

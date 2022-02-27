@@ -48,14 +48,38 @@ export const updateHab: RequestHandler = async (req, res) => {
 	}
 };
 
-/* export const getHab: RequestHandler = async (req, res) => {
+export const getHab: RequestHandler = async (req, res) => {
 	try {
 		const habFound = await Habitaciones.findById(req.params.id);
 		return res.json(habFound);
 	} catch (error) {
 		return res.json('Habitación no encontrada').status(204);
 	}
-}; */
+};
+
+export const updateHabData: RequestHandler = async (req, res) => {
+	try {
+		const habUpdated = await Habitaciones.findByIdAndUpdate(
+			req.params.id,
+			req.body,
+			{ new: true }
+		);
+		return res.json(habUpdated);
+	} catch (error) {
+		return res.json({
+			_id: 'VNE',
+			number: 2,
+			status: 'libre',
+			priceFraction: 30,
+			priceFull: 40,
+			timesRented: 1,
+			createdAt: '2022-02-14T20:23:11.895Z',
+			updatedAt: '2022-02-24T22:31:05.159Z',
+			hrIn: null,
+			hrOut: null,
+		});
+	}
+};
 
 /* export const deleteHab: RequestHandler = async (req, res) => {
 	try {
