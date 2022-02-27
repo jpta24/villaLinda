@@ -10,10 +10,6 @@ type InputChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
 type typeSubmit = FormEvent<HTMLFormElement>;
 
-/* interface Params {
-	id: string;
-} */
-
 const HabForm = () => {
 	const history = useNavigate();
 
@@ -41,16 +37,17 @@ const HabForm = () => {
 		setHabState({ ...habState, [e.target.name]: e.target.value });
 	};
 
-	const handleStatusChange = (e: InputChange) => {
-		console.log(e.target.name);
-		console.log(e.target.value);
-		console.log(habState);
-
-		setHabState({ ...habState, [e.target.name]: e.target.value });
+	const handleStatusChange = (hab: HabInterface, string: string) => {
+		hab.status = string;
+		if (string === 'ResFrac' || string === 'ResFull') {
+			hab.hrIn = new Date();
+		} else if (string === 'ResMantto') {
+			hab.hrOut = new Date();
+		}
 	};
 
 	const handleSubmit = async (e: typeSubmit) => {
-		e.preventDefault(); // previene el comportamiento inicial de cambiar la direccion de nav
+		e.preventDefault();
 
 		if (params) {
 			await habServices.updateHabData(params, habState);
@@ -60,7 +57,7 @@ const HabForm = () => {
 			//toast.success('Nueva Habitación creada');
 		}
 
-		history('/admin-habs'); // a la direccion que quiero ir
+		history('/admin-habs');
 	};
 
 	const getHab = async (id: string) => {
@@ -170,7 +167,9 @@ const HabForm = () => {
 												type='button'
 												name='status'
 												value='libre'
-												onClick={() => handleInputChange}
+												onClick={() => {
+													handleStatusChange(habState, 'libre');
+												}}
 											>
 												Libre
 											</button>
@@ -179,7 +178,9 @@ const HabForm = () => {
 												type='button'
 												name='status'
 												value='ResFrac'
-												onClick={() => handleInputChange}
+												onClick={() => {
+													handleStatusChange(habState, 'ResFrac');
+												}}
 											>
 												Reserva Fracción
 											</button>
@@ -188,7 +189,9 @@ const HabForm = () => {
 												type='button'
 												name='status'
 												value='ResFull'
-												onClick={() => handleInputChange}
+												onClick={() => {
+													handleStatusChange(habState, 'ResFull');
+												}}
 											>
 												Reserva Full
 											</button>
@@ -197,23 +200,14 @@ const HabForm = () => {
 												type='button'
 												name='status'
 												value='ResMantto'
-												onClick={() => handleInputChange}
+												onClick={() => {
+													handleStatusChange(habState, 'ResMantto');
+												}}
 											>
 												En Mantenimiento
 											</button>
 										</div>
 									</div>
-									{/* <div className='col-sm-8'>
-										<input
-											type='text'
-											name='status'
-											placeholder='Escriba el Status de la Habitación'
-											className='form-control'
-											onChange={handleInputChange}
-											autoFocus
-											value={habState.status}
-										/>
-									</div> */}
 								</div>
 
 								<div className='form-group row my-1'>
