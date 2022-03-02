@@ -21,6 +21,10 @@ export const updateHabData = async (id: string, hab: HabInterface) => {
 	return await axios.put<HabInterface>(`${API}/${id}`, hab);
 };
 
+export const createHab = async (hab: HabInterface) => {
+	return await axios.post(API, hab);
+};
+
 /* export const deleteKeyWord = async (id: string) => {
 	return await axios.delete<UrlInterface>(`${API}/${id}`);
 };
@@ -48,9 +52,7 @@ export const createAsin = async (
 };
 
 
-export const createVideo = async (video: Video) => {
-	return await axios.post(`${API}/videos`, video);
-};
+
 
 export const getVideo = async (id: string) => {
 	return await axios.get<Video>(`${API}/videos/${id}`);

@@ -21,6 +21,7 @@ ReactDOM.render(
 				<Route path='/control-habs' element={<Control />} />
 				<Route path='/admin-habs' element={<Control />} />
 				<Route path='/admin-habs/:id' element={<HabForm />} />
+				<Route path='/admin-habs/create-hab' element={<HabForm />} />
 			</Routes>
 			<ToastContainer />
 		</BrowserRouter>

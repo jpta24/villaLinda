@@ -80,12 +80,26 @@ const Control = () => {
 				</div>
 			</div>
 			<div className='row my-4 justify-content-center'>
-				<button type='button' className=' col-md-2 mx-3 btn btn-warning'>
-					Ver Reporte
-				</button>
-				<button type='button' className='col-md-2 mx-3 btn btn-primary'>
+				{url.search('control-habs') > 0 ? (
+					<div className='row '>
+						<button type='button' className=' col-md-2 mx-3 btn btn-warning'>
+							Ver Reporte
+						</button>
+					</div>
+				) : (
+					<div className='row justify-content-center'>
+						<button type='button' className=' col-md-2 mx-3 btn btn-warning'>
+							Crear Habitación
+						</button>
+						<button type='button' className=' col-md-2 mx-3 btn btn-info'>
+							Crear Extra
+						</button>
+					</div>
+				)}
+
+				{/* <button type='button' className='col-md-2 mx-3 btn btn-primary'>
 					Entregar Turno
-				</button>
+				</button> */}
 			</div>
 		</div>
 	);

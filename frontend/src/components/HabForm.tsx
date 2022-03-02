@@ -22,9 +22,9 @@ const HabForm = () => {
 		createdAt: new Date(),
 		updatedAt: '',
 		number: 0,
-		status: '',
-		priceFraction: 0,
-		priceFull: 0,
+		status: 'libre',
+		priceFraction: 30,
+		priceFull: 50,
 		hrIn: new Date(),
 		hrOut: new Date(),
 		hrMantto: new Date(),
@@ -130,13 +130,19 @@ const HabForm = () => {
 		}
 	};
 
+	const url = window.location.href;
+
 	return (
 		<div className='container'>
 			<div className='row'>
 				<div className='col-md-5 offset-md-3 my-4'>
 					<div className='card my-4'>
 						<div className='card-body'>
-							{params ? (
+							{url.search('create-hab') > 0 ? (
+								<h3 className='m-2 text-center titleform'>
+									Crear Nueva Habitación
+								</h3>
+							) : params ? (
 								<h3 className='m-2 text-center titleform'>
 									Editar Habitación
 									<br />
@@ -145,8 +151,22 @@ const HabForm = () => {
 							) : (
 								<h3 className='m-2 text-center titleform'>New Video</h3>
 							)}
+
 							<form onSubmit={handleSubmit}>
 								<div className='form-group row my-1'>
+									<div className='form-group row my-1'>
+										<label className='col-sm-4 col-form-label'>Número</label>
+										<div className='col-sm-8'>
+											<input
+												type='number'
+												name='number'
+												placeholder='Número de la Nueva Habitación'
+												className='form-control'
+												onChange={handleInputChange}
+												value={habState.number}
+											/>
+										</div>
+									</div>
 									<div className='dropdown' onClick={toggleOpen}>
 										<label className='col-sm-4 col-form-label'>Status</label>
 										<button
@@ -243,19 +263,19 @@ const HabForm = () => {
 								</div>
 								<div className='row m-3'>
 									{params ? (
-										<button type='submit' className='btn btn-info m-2'>
-											Editar
-										</button>
+										<div className='row m-3'>
+											<button type='submit' className='btn btn-info m-2'>
+												Editar
+											</button>
+											<button type='submit' className='btn btn-danger m-2'>
+												Eliminar Habitación
+											</button>
+										</div>
 									) : (
 										<button type='submit' className='btn btn-primary m-2'>
-											Add Video
+											Crear Habitación
 										</button>
 									)}
-								</div>
-								<div className='row m-3'>
-									<button type='submit' className='btn btn-danger m-2'>
-										Eliminar Habitación
-									</button>
 								</div>
 							</form>
 						</div>
