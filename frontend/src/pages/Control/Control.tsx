@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as habServices from '../../Services/HabServices';
 import { HabInterface } from '../../Services/HabInterface';
 import '../Control/style.scss';
@@ -45,6 +46,8 @@ const Control = () => {
 	});
 
 	const url = window.location.href;
+
+	const history = useNavigate();
 	return (
 		<div className='container'>
 			<div className='row'>
@@ -88,7 +91,13 @@ const Control = () => {
 					</div>
 				) : (
 					<div className='row justify-content-center'>
-						<button type='button' className=' col-md-2 mx-3 btn btn-warning'>
+						<button
+							type='button'
+							className=' col-md-2 mx-3 btn btn-warning'
+							onClick={() => {
+								history(`/admin-habs/create-hab`);
+							}}
+						>
 							Crear Habitación
 						</button>
 						<button type='button' className=' col-md-2 mx-3 btn btn-info'>

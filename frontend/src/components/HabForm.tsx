@@ -153,7 +153,7 @@ const HabForm = () => {
 							)}
 
 							<form onSubmit={handleSubmit}>
-								<div className='form-group row my-1'>
+								{url.search('create-hab') > 0 ? (
 									<div className='form-group row my-1'>
 										<label className='col-sm-4 col-form-label'>Número</label>
 										<div className='col-sm-8'>
@@ -167,10 +167,13 @@ const HabForm = () => {
 											/>
 										</div>
 									</div>
-									<div className='dropdown' onClick={toggleOpen}>
-										<label className='col-sm-4 col-form-label'>Status</label>
+								) : null}
+
+								<div className='dropdown row my-1' onClick={toggleOpen}>
+									<label className='col-sm-4 col-form-label'>Status</label>
+									<div className='col-sm-8'>
 										<button
-											className='btn btn-secondary dropdown-toggle col-sm-8'
+											className='btn btn-secondary dropdown-toggle col-sm-12'
 											type='button'
 											id='dropdownMenuButton'
 											data-toggle='dropdown'
@@ -261,36 +264,41 @@ const HabForm = () => {
 										/>
 									</div>
 								</div>
-								<div className='row m-3'>
-									{params ? (
-										<div className='row m-3'>
-											<button type='submit' className='btn btn-info m-2'>
-												Editar
-											</button>
-											<button type='submit' className='btn btn-danger m-2'>
-												Eliminar Habitación
-											</button>
-										</div>
-									) : (
-										<button type='submit' className='btn btn-primary m-2'>
+
+								{params ? (
+									<div className='form-group row my-2 mx-3'>
+										<button type='submit' className='btn btn-info my-2'>
+											Editar
+										</button>
+										<button type='submit' className='btn btn-danger my-2'>
+											Eliminar Habitación
+										</button>
+									</div>
+								) : (
+									<div className='form-group row my-2 mx-3'>
+										<button type='submit' className='btn btn-primary my-2'>
 											Crear Habitación
 										</button>
-									)}
-								</div>
+									</div>
+								)}
 							</form>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div className='row col-md-5 offset-md-3 my-4'>
-				<button
-					className='btn btn-warning m-2'
-					onClick={() => {
-						history(`/admin-habs`);
-					}}
-				>
-					Regresar
-				</button>
+			<div className='row'>
+				<div className='col-md-5 offset-md-3 my-1'>
+					<div className='form-group row my-2 mx-3 justify-content-center'>
+						<button
+							className='btn btn-warning col-sm-8 m-2'
+							onClick={() => {
+								history(`/admin-habs`);
+							}}
+						>
+							Regresar
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
