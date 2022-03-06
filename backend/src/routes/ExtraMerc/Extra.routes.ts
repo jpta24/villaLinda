@@ -9,8 +9,10 @@ router.post('/extramercs', extraCtrl.createExtra);
 
 router.put('/extramercs', extraCtrl.updateExtra);
 
-//router.get('/habitaciones/:id', extraCtrl.getExtra);
+router.get('/extramercs/:id', extraCtrl.getExtra);
 
-//router.delete('/habitaciones/:id', extraCtrl.deleteExtra);
+router.put('/extramercs/:id', extraCtrl.updateExtraData);
+
+router.delete('/extramercs/:id', extraCtrl.deleteExtra);
 
 export default router;

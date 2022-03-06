@@ -90,7 +90,7 @@ const Hab = ({ eachHab, resFrac }: Props) => {
 								resFrac(event, eachHab, 'libre');
 						  }
 						: () => {
-								history(`/admin-habs/${eachHab._id}`);
+								history(`/admin-habs/habs/${eachHab._id}`);
 						  }
 				}
 			>
@@ -107,7 +107,7 @@ const Hab = ({ eachHab, resFrac }: Props) => {
 											resFrac(event, eachHab, 'full');
 									  }
 									: () => {
-											history(`/admin-habs/${eachHab._id}`);
+											history(`/admin-habs/habs/${eachHab._id}`);
 									  }
 							}
 						></div>

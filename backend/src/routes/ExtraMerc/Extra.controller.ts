@@ -33,12 +33,53 @@ export const updateExtra: RequestHandler = async (req, res) => {
 	}
 };
 
+//------------------------------------------------------------------------
+
+export const getExtra: RequestHandler = async (req, res) => {
+	try {
+		const extraFound = await ExtraMerc.findById(req.params.id);
+		return res.json(extraFound);
+	} catch (error) {
+		return res.json('Extra no encontrada').status(204);
+	}
+};
+
+export const updateExtraData: RequestHandler = async (req, res) => {
+	try {
+		const extraUpdated = await ExtraMerc.findByIdAndUpdate(
+			req.params.id,
+			req.body,
+			{ new: true }
+		);
+		return res.json(extraUpdated);
+	} catch (error) {
+		return res.json({
+			_id: 'VNE',
+			name: '',
+			priceBuy: '',
+			priceSell: '',
+			qty: '',
+			createdAt: '2022-02-14T20:23:11.895Z',
+			updatedAt: '2022-02-14T20:23:11.895Z',
+		});
+	}
+};
+
+export const deleteExtra: RequestHandler = async (req, res) => {
+	try {
+		const extraFound = await ExtraMerc.findByIdAndDelete(req.params.id);
+		return res.json(extraFound);
+	} catch (error) {
+		return res.json('Extra no encontrada').status(204);
+	}
+};
+
 /* export const getHab: RequestHandler = async (req, res) => {
 	try {
 		const habFound = await Habitaciones.findById(req.params.id);
 		return res.json(habFound);
 	} catch (error) {
-		return res.json('Habitación no encontrada').status(204);
+		return res.json('Extra no encontrada').status(204);
 	}
 }; */
 

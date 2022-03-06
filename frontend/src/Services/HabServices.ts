@@ -25,6 +25,10 @@ export const createHab = async (hab: HabInterface) => {
 	return await axios.post(API, hab);
 };
 
+export const deleteHab = async (id: string) => {
+	return await axios.delete<HabInterface>(`${API}/${id}`);
+};
+
 /* export const deleteKeyWord = async (id: string) => {
 	return await axios.delete<UrlInterface>(`${API}/${id}`);
 };

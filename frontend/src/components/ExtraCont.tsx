@@ -9,9 +9,6 @@ const ExtraCont = () => {
 	const loadExtras = async () => {
 		const res = await extraServices.getExtras();
 		setExtras(res.data);
-		// para ordenar los resultados aplica los que esta en el archivo
-		//C:\Users\jeanp\Documents\WEB DEVELOPMENT\mydstore\frontend\src\pages\ScanUrl
-		//const formatedKW
 	};
 
 	useEffect(() => {

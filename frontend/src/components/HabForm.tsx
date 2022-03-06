@@ -6,6 +6,8 @@ import * as habServices from '../Services/HabServices';
 
 import { HabInterface } from '../Services/HabInterface';
 
+import DeleteHabModal from '../components/Modals/DeleteHab';
+
 type InputChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
 type typeSubmit = FormEvent<HTMLFormElement>;
@@ -20,7 +22,7 @@ const HabForm = () => {
 	const initialState = {
 		_id: '',
 		createdAt: new Date(),
-		updatedAt: '',
+		updatedAt: new Date(),
 		number: 0,
 		status: 'libre',
 		priceFraction: 30,
@@ -51,10 +53,12 @@ const HabForm = () => {
 
 		if (params) {
 			await habServices.updateHabData(params, habState);
-			toast.info('Habitación Editada');
+			toast.warning('Habitación Editada');
 		} else {
-			//await videoServices.createVideo(videoState); // si quiero usar lo que estoy enviando para verlo lo meto en una const res =
-			//toast.success('Nueva Habitación creada');
+			delete habState._id;
+			await habServices.createHab(habState);
+			habState._id = '';
+			toast.success('Habitación Creada');
 		}
 
 		history('/admin-habs');
@@ -148,9 +152,7 @@ const HabForm = () => {
 									<br />
 									{habState.number}
 								</h3>
-							) : (
-								<h3 className='m-2 text-center titleform'>New Video</h3>
-							)}
+							) : null}
 
 							<form onSubmit={handleSubmit}>
 								{url.search('create-hab') > 0 ? (
@@ -267,16 +269,11 @@ const HabForm = () => {
 
 								{params ? (
 									<div className='form-group row my-2 mx-3'>
-										<button type='submit' className='btn btn-info my-2'>
-											Editar
-										</button>
-										<button type='submit' className='btn btn-danger my-2'>
-											Eliminar Habitación
-										</button>
+										<button className='btn btn-info my-2'>Editar</button>
 									</div>
 								) : (
 									<div className='form-group row my-2 mx-3'>
-										<button type='submit' className='btn btn-primary my-2'>
+										<button className='btn btn-primary my-2'>
 											Crear Habitación
 										</button>
 									</div>
@@ -288,7 +285,9 @@ const HabForm = () => {
 			</div>
 			<div className='row'>
 				<div className='col-md-5 offset-md-3 my-1'>
-					<div className='form-group row my-2 mx-3 justify-content-center'>
+					<div className='form-group row my-1 mx-3 justify-content-center'>
+						{params ? <DeleteHabModal /> : null}
+
 						<button
 							className='btn btn-warning col-sm-8 m-2'
 							onClick={() => {

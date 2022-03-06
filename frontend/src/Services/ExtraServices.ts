@@ -11,6 +11,22 @@ export const updateExtra = async (extra: ExtraInterface) => {
 	return await axios.put<ExtraInterface>(API, extra);
 };
 
+export const getExtra = async (id: string) => {
+	return await axios.get<ExtraInterface>(`${API}/${id}`);
+};
+
+export const updateExtraData = async (id: string, hab: ExtraInterface) => {
+	return await axios.put<ExtraInterface>(`${API}/${id}`, hab);
+};
+
+export const createExtra = async (hab: ExtraInterface) => {
+	return await axios.post(API, hab);
+};
+
+export const deleteExtra = async (id: string) => {
+	return await axios.delete<ExtraInterface>(`${API}/${id}`);
+};
+
 /* export const updateKeyWord = async (
 	obj: UrlInterface,
 	responseCallback?: string

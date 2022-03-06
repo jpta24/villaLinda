@@ -13,6 +13,6 @@ router.get('/habitaciones/:id', habCtrl.getHab);
 
 router.put('/habitaciones/:id', habCtrl.updateHabData);
 
-//router.delete('/habitaciones/:id', habCtrl.deleteHab);
+router.delete('/habitaciones/:id', habCtrl.deleteHab);
 
 export default router;

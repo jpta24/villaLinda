@@ -5,6 +5,7 @@ import { ExtraInterface } from '../Services/ExtraInterface';
 import condoms from '../assets/images/condoms.png';
 import beers from '../assets/images/beers.png';
 import cokes from '../assets/images/cokes.png';
+import { useNavigate } from 'react-router-dom';
 
 type InputChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
@@ -18,6 +19,8 @@ interface CantInterface {
 }
 
 const Extras = ({ eachExtra, buyExtra }: Props) => {
+	const history = useNavigate();
+
 	const funtIcon = (string: string) => {
 		switch (string) {
 			case 'Preservativos':
@@ -76,9 +79,8 @@ const Extras = ({ eachExtra, buyExtra }: Props) => {
 									setCantState(initialState);
 								}
 						  }
-						: (event: React.MouseEvent<HTMLElement>) => {
-								event.stopPropagation();
-								event.nativeEvent.stopImmediatePropagation();
+						: () => {
+								history(`/admin-habs/extras/${eachExtra._id}`);
 						  }
 				}
 			>
@@ -94,10 +96,16 @@ const Extras = ({ eachExtra, buyExtra }: Props) => {
 							className='form-control m-2 formExtra'
 							onChange={handleInputChange} // maneja los cambios en el input con esa funcion
 							value={cantState.cant}
-							onClick={(event: React.MouseEvent<HTMLElement>) => {
-								event.stopPropagation();
-								event.nativeEvent.stopImmediatePropagation();
-							}}
+							onClick={
+								url.search('control-habs') > 0
+									? (event: React.MouseEvent<HTMLElement>) => {
+											event.stopPropagation();
+											event.nativeEvent.stopImmediatePropagation();
+									  }
+									: () => {
+											history(`/admin-habs/extras/${eachExtra._id}`);
+									  }
+							}
 						/>
 					</div>
 				</div>

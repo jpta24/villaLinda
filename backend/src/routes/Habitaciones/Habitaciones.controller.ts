@@ -2,6 +2,8 @@ import { RequestHandler } from 'express';
 import Habitaciones from './Habitaciones';
 
 export const createHab: RequestHandler = async (req, res) => {
+	console.log(req.body);
+
 	const habFound = await Habitaciones.findOne({ number: req.body.number });
 	if (habFound)
 		return res.status(301).json({ message: 'Esta Habitación ya existe' });
@@ -81,11 +83,11 @@ export const updateHabData: RequestHandler = async (req, res) => {
 	}
 };
 
-/* export const deleteHab: RequestHandler = async (req, res) => {
+export const deleteHab: RequestHandler = async (req, res) => {
 	try {
 		const habFound = await Habitaciones.findByIdAndDelete(req.params.id);
 		return res.json(habFound);
 	} catch (error) {
 		return res.json('Habitación no encontrada').status(204);
 	}
-}; */
+};
