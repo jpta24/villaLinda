@@ -6,6 +6,7 @@ import config from './config';
 
 import habRoutes from './routes/Habitaciones/Habitaciones.routes';
 import extraRoutes from './routes/ExtraMerc/Extra.routes';
+import gralLog from './routes/GralLog/GralLog.routes';
 
 const app = express();
 
@@ -18,5 +19,6 @@ app.use(express.urlencoded({ extended: false })); // para entender los campos qu
 
 app.use(habRoutes);
 app.use(extraRoutes);
+app.use(gralLog);
 
 export default app;

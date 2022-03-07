@@ -4,7 +4,7 @@ import ExtraMerc from './Extra';
 export const createExtra: RequestHandler = async (req, res) => {
 	const extraFound = await ExtraMerc.findOne({ name: req.body.name });
 	if (extraFound)
-		return res.status(301).json({ message: 'Estae Extra ya existe' });
+		return res.status(301).json({ message: 'Este Extra ya existe' });
 
 	const extra = new ExtraMerc(req.body);
 	const savedExtra = await extra.save();
