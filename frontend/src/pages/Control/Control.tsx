@@ -55,13 +55,13 @@ const Control = () => {
 	return (
 		<div className='container'>
 			<div className='row'>
-				<h2 className='my-2 text-center'>
+				<h2 className='my-1 text-center'>
 					{url.search('control-habs') > 0
 						? 'CONTROL DE HABITACIONES'
 						: 'ADMINISTRACION DE HABITACIONES'}
 				</h2>
 				<div className='col-md-6'>
-					<h3 className='my-3 text-center'>Sencillas</h3>
+					<h3 className='my-1 text-center'>Sencillas</h3>
 					<div className='row mx-auto'>
 						{habitacionesSencillas.map((eachHab: HabInterface) => {
 							return (
@@ -71,7 +71,7 @@ const Control = () => {
 					</div>
 				</div>
 				<div className='col-md-2'>
-					<h3 className='my-3 text-center'>Suites</h3>
+					<h3 className='my-1 text-center'>Suites</h3>
 					<div className='row mx-auto '>
 						{habitacionesSuites.map((eachHab: HabInterface) => {
 							return (
@@ -82,11 +82,11 @@ const Control = () => {
 				</div>
 				<div className='col-md-1'></div>
 				<div className='col-md-2'>
-					<h3 className='my-3 text-center'>Extras</h3>
+					<h3 className='my-1 text-center'>Extras</h3>
 					<ExtraCont />
 				</div>
 			</div>
-			<div className='row my-4 justify-content-center'>
+			<div className='row my-1 justify-content-center'>
 				{url.search('control-habs') > 0 ? (
 					<div className='row '>
 						<button type='button' className=' col-md-2 mx-3 btn btn-warning'>

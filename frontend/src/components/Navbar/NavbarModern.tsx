@@ -1,122 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Container, Nav } from 'react-bootstrap';
+import { Container, Nav, NavDropdown } from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
 
-import logo from '../Body/Assets/Img/Some/coding_icon_color.png';
-
-interface NavbarInterface {
-	Home: string;
-	About: string;
-	Skills: string;
-	Portafolio: string;
-	Contact: string;
-}
-
 const NavbarModern = () => {
-	const initialState = {
-		Home: 'col-md-1 text-center mx-auto px-0',
-		About: 'col-md-2 text-center my-auto px-2 mx-2 NavBo',
-		Skills: 'col-md-2 text-center my-auto px-2 mx-2 NavBo',
-		Portafolio: 'col-md-2 text-center my-auto px-2 mx-2 NavBo',
-		Contact: 'col-md-2 text-center my-auto px-2 mx-2 NavBo',
-	};
-
-	const [Active, setActive] = useState<NavbarInterface>({
-		Home: 'col-md-1 text-center mx-auto px-0 active',
-		About: 'col-md-2 text-center my-auto px-2 mx-2 NavBo',
-		Skills: 'col-md-2 text-center my-auto px-2 mx-2 NavBo',
-		Portafolio: 'col-md-2 text-center my-auto px-2 mx-2 NavBo',
-		Contact: 'col-md-2 text-center my-auto px-2 mx-2 NavBo',
-	});
-
-	const handleClick = (id: string) => {
-		if (id === 'Home') {
-			setActive({
-				...initialState,
-				[id]: 'col-md-1 text-center mx-auto px-0 activeB',
-			});
-		} else {
-			setActive({
-				...initialState,
-				[id]: 'col-md-2 text-center my-auto px-2 mx-2 NavBo activeN',
-			});
-		}
-	};
-
 	return (
-		<Navbar
-			variant='dark'
-			collapseOnSelect
-			expand='md'
-			fixed='top'
-			className='py-1 NavbarM'
-		>
-			<Container className='justify-content-end'>
-				<Navbar.Toggle
-					aria-controls='responsive-navbar-nav'
-					className='justify-content-center'
-				/>
-				<Navbar.Collapse
-					id='responsive-navbar-nav'
-					className='justify-content-center'
-				>
-					<Nav
-						id='responsive-navbar-nav'
-						className='col-md-10 justify-content-center'
-					>
-						<Nav.Link
-							className={Active.About}
-							href='#aboutme'
-							onClick={() => {
-								handleClick('About');
-							}}
-						>
-							About Me
-						</Nav.Link>
-						<Nav.Link
-							className={Active.Skills}
-							href='#skills'
-							onClick={() => {
-								handleClick('Skills');
-							}}
-						>
-							Skills
-						</Nav.Link>
-
-						<Navbar.Brand href='#hero' className={Active.Home}>
-							<img
-								src={logo}
-								width='60'
-								height='auto'
-								className='d-inline-block align-top NavBrand'
-								alt='React Bootstrap logo'
-								onClick={() => {
-									handleClick('Home');
-								}}
-							/>
-						</Navbar.Brand>
-
-						<Nav.Link
-							className={Active.Portafolio}
-							href='#projects'
-							onClick={() => {
-								handleClick('Projects');
-							}}
-						>
-							Projects
-						</Nav.Link>
-						<Nav.Link
-							className={Active.Contact}
-							href='#contact'
-							onClick={() => {
-								handleClick('Contact');
-							}}
-						>
-							Contact
-						</Nav.Link>
-					</Nav>
-				</Navbar.Collapse>
+		<Navbar bg='dark' variant='dark'>
+			<Container>
+				<Navbar.Brand href='/'>VILLA LINDA</Navbar.Brand>
+				<Nav className='me-auto'>
+					<NavDropdown title='Admin / Control' id='basic-nav-dropdown'>
+						<NavDropdown.Item href='/control-habs'>
+							Control Habs
+						</NavDropdown.Item>
+						<NavDropdown.Item href='/admin-habs'>
+							Administrar Habs
+						</NavDropdown.Item>
+						<NavDropdown.Item href='/admin-habs/create-hab'>
+							Crear Hab
+						</NavDropdown.Item>
+						<NavDropdown.Item href='/admin-habs/create-extra'>
+							Crear Extra
+						</NavDropdown.Item>
+					</NavDropdown>
+					<Nav.Link href='#features'>Features</Nav.Link>
+					<Nav.Link href='#pricing'>Pricing</Nav.Link>
+				</Nav>
 			</Container>
 		</Navbar>
 	);

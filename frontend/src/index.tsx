@@ -13,10 +13,12 @@ import Control from './pages/Control/Control';
 import reportWebVitals from './reportWebVitals';
 import HabForm from './components/HabForm';
 import ExtraForm from './components/ExtraForm';
+import NavbarModern from './components/Navbar/NavbarModern';
 
 ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter>
+			<NavbarModern />
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/control-habs' element={<Control />} />

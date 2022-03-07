@@ -110,7 +110,9 @@ const Extras = ({ eachExtra, buyExtra }: Props) => {
 					</div>
 				</div>
 
-				<p className='my-0 text-center'>Disp: {eachExtra.qty}</p>
+				<p className='my-0 text-center'>
+					{eachExtra.qty} / $ {eachExtra.priceSell}
+				</p>
 			</div>
 		</div>
 	);
