@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { HabInterface } from './HabInterface';
+import { GralLogInterface } from './GralLogInterface';
 /*import { AsinItemInterface } from './AsinItemInterface';
 import { AsinsConfirmedInterface } from './AsinsConfirmedInterface'; */
 
@@ -9,8 +10,8 @@ export const getHabs = async () => {
 	return await axios.get<HabInterface[]>(API);
 };
 
-export const updateHab = async (hab: HabInterface) => {
-	return await axios.put<HabInterface>(API, hab);
+export const updateHab = async (gralLog: GralLogInterface) => {
+	return await axios.put<HabInterface>(API, gralLog);
 };
 
 export const getHab = async (id: string) => {

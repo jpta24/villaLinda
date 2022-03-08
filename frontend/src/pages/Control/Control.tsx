@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as habServices from '../../Services/HabServices';
 import { HabInterface } from '../../Services/HabInterface';
+import { GralLogInterface } from '../../Services/GralLogInterface';
 import '../Control/style.scss';
 import Hab from '../../components/Hab';
 import ExtraCont from '../../components/ExtraCont';
 
 const Control = () => {
+	const user = 'Jean';
+
 	const [habs, setHabs] = useState<HabInterface[]>([]);
 
 	const loadHabs = async () => {
@@ -37,7 +40,15 @@ const Control = () => {
 		) {
 			hab.status = string;
 		}
-		await habServices.updateHab(hab);
+
+		const newLog = {
+			user: user,
+			type: 'Income',
+			description: {
+				hab: hab,
+			},
+		};
+		await habServices.updateHab(newLog);
 		loadHabs();
 	};
 

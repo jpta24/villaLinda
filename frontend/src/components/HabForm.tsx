@@ -27,9 +27,9 @@ const HabForm = () => {
 		status: 'libre',
 		priceFraction: 30,
 		priceFull: 50,
-		hrIn: new Date(),
-		hrOut: new Date(),
-		hrMantto: new Date(),
+		hrIn: null,
+		hrOut: null,
+		hrMantto: null,
 		timesRented: 0,
 	};
 

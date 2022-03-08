@@ -1,4 +1,7 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Mongoose } from 'mongoose';
+import Habitaciones from '../Habitaciones/Habitaciones';
+import Extra from '../ExtraMerc/Extra';
+import Outcome from '../Outcome/Outcome';
 
 const gralLogSchema = new Schema(
 	{
@@ -11,44 +14,9 @@ const gralLogSchema = new Schema(
 			required: true,
 		},
 		description: {
-			hab: {
-				number: {
-					type: Number,
-				},
-				status: {
-					type: String,
-				},
-				price: {
-					type: Number,
-					trim: true,
-				},
-				timesRented: {
-					type: Number,
-					trim: true,
-				},
-			},
-			extra: {
-				name: {
-					type: String,
-				},
-				qty: {
-					type: Number,
-					trim: true,
-				},
-				price: {
-					type: Number,
-					trim: true,
-				},
-			},
-			outcome: {
-				name: {
-					type: String,
-				},
-				price: {
-					type: Number,
-					trim: true,
-				},
-			},
+			hab: { type: Schema.Types.ObjectId, ref: Habitaciones },
+			extra: { type: Schema.Types.ObjectId, ref: Extra },
+			outcome: { type: Schema.Types.ObjectId, ref: Outcome },
 		},
 		note: {
 			type: String,

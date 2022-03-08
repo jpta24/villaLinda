@@ -1,15 +1,15 @@
 import { RequestHandler } from 'express';
 import Habitaciones from './Habitaciones';
+import GralLog from '../GralLog/GralLog';
 
 export const createHab: RequestHandler = async (req, res) => {
-	console.log(req.body);
-
 	const habFound = await Habitaciones.findOne({ number: req.body.number });
 	if (habFound)
 		return res.status(301).json({ message: 'Esta Habitación ya existe' });
 
 	const hab = new Habitaciones(req.body);
 	const savedHabitaciones = await hab.save();
+
 	res.json(savedHabitaciones);
 };
 
@@ -23,27 +23,33 @@ export const getHabs: RequestHandler = async (req, res) => {
 };
 
 export const updateHab: RequestHandler = async (req, res) => {
+	let info = req.body.description.hab;
 	try {
-		if (req.body.status === 'libre') {
-			req.body.hrIn = new Date();
-			req.body.status = 'ResFrac';
-		} else if (req.body.status === 'full') {
-			req.body.hrIn = new Date();
-			req.body.status = 'ResFull';
-		} else if (req.body.status === 'ResFrac' || req.body.status === 'ResFull') {
-			req.body.hrOut = new Date();
-			req.body.status = 'ResMantto';
-			req.body.timesRented++;
-		} else if (req.body.status === 'ResMantto') {
-			req.body.status = 'libre';
-			req.body.hrIn = null;
-			req.body.hrOut = null;
+		if (info.status === 'libre') {
+			info.hrIn = new Date();
+			info.status = 'ResFrac';
+		} else if (info.status === 'full') {
+			info.hrIn = new Date();
+			info.status = 'ResFull';
+		} else if (info.status === 'ResFrac' || info.status === 'ResFull') {
+			info.hrOut = new Date();
+			info.status = 'ResMantto';
+			info.timesRented++;
+		} else if (info.status === 'ResMantto') {
+			info.status = 'libre';
+			info.hrIn = null;
+			info.hrOut = null;
 		}
-		const habUpdated = await Habitaciones.findByIdAndUpdate(
-			req.body._id,
-			req.body,
-			{ new: true }
-		);
+		const habUpdated = await Habitaciones.findByIdAndUpdate(info._id, info, {
+			new: true,
+		});
+
+		const newLogUpdated = new GralLog(req.body);
+		const savedLog = await newLogUpdated.save();
+
+		const { _id, number, status, priceFraction, priceFull, timesRented } =
+			req.body.description.hab;
+
 		return res.json(habUpdated);
 	} catch (error) {
 		return res.json('Habitación no encontrada').status(204);

@@ -5,9 +5,9 @@ import * as gralLogCtrl from './GralLog.controller';
 
 router.post('/logs', gralLogCtrl.createGralLog);
 
-/* router.get('/logs', gralLogCtrl.getGralLogs);
+router.get('/logs', gralLogCtrl.getGralLogs);
 
-router.put('/logs', gralLogCtrl.updateGralLog);
+/* router.put('/logs', gralLogCtrl.updateGralLog);
 
 router.get('/logs/:id', gralLogCtrl.getGralLog);
 
