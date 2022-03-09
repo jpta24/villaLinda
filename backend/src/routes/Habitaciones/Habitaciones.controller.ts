@@ -47,9 +47,6 @@ export const updateHab: RequestHandler = async (req, res) => {
 		const newLogUpdated = new GralLog(req.body);
 		const savedLog = await newLogUpdated.save();
 
-		const { _id, number, status, priceFraction, priceFull, timesRented } =
-			req.body.description.hab;
-
 		return res.json(habUpdated);
 	} catch (error) {
 		return res.json('Habitación no encontrada').status(204);

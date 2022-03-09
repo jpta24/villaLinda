@@ -14,9 +14,9 @@ const gralLogSchema = new Schema(
 			required: true,
 		},
 		description: {
-			hab: { type: Schema.Types.ObjectId, ref: Habitaciones },
-			extra: { type: Schema.Types.ObjectId, ref: Extra },
-			outcome: { type: Schema.Types.ObjectId, ref: Outcome },
+			hab: { type: Schema.Types.Mixed, ref: Habitaciones },
+			extra: { type: Schema.Types.Mixed, ref: Extra },
+			outcome: { type: Schema.Types.Mixed, ref: Outcome },
 		},
 		note: {
 			type: String,
