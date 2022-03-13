@@ -104,6 +104,8 @@ const Hab = ({ eachHab, resFrac }: Props) => {
 							onClick={
 								url.search('control-habs') > 0
 									? (event: React.MouseEvent<HTMLElement>) => {
+											event.stopPropagation();
+											event.nativeEvent.stopImmediatePropagation();
 											resFrac(event, eachHab, 'full');
 									  }
 									: () => {

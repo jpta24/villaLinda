@@ -1,6 +1,8 @@
 import { RequestHandler } from 'express';
 import ExtraMerc from './Extra';
 
+import GralLog from '../GralLog/GralLog';
+
 export const createExtra: RequestHandler = async (req, res) => {
 	const extraFound = await ExtraMerc.findOne({ name: req.body.name });
 	if (extraFound)
@@ -21,12 +23,15 @@ export const getExtras: RequestHandler = async (req, res) => {
 };
 
 export const updateExtra: RequestHandler = async (req, res) => {
+	let info = req.body.description.extra;
 	try {
-		const extraUpdated = await ExtraMerc.findByIdAndUpdate(
-			req.body._id,
-			req.body,
-			{ new: true }
-		);
+		const extraUpdated = await ExtraMerc.findByIdAndUpdate(info._id, info, {
+			new: true,
+		});
+
+		const newLogUpdated = new GralLog(req.body);
+		const savedLog = await newLogUpdated.save();
+
 		return res.json(extraUpdated);
 	} catch (error) {
 		return res.json('Extra no encontrado').status(204);

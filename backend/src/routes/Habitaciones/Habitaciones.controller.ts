@@ -23,7 +23,7 @@ export const getHabs: RequestHandler = async (req, res) => {
 };
 
 export const updateHab: RequestHandler = async (req, res) => {
-	let info = req.body.description.hab;
+	let info = req.body.description.extra;
 	try {
 		if (info.status === 'libre') {
 			info.hrIn = new Date();

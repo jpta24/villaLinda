@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { ExtraInterface } from './ExtraInterface';
+import { GralLogInterface } from './GralLogInterface';
 
 const API = 'http://localhost:5400/extramercs';
 
@@ -7,8 +8,8 @@ export const getExtras = async () => {
 	return await axios.get<ExtraInterface[]>(API);
 };
 
-export const updateExtra = async (extra: ExtraInterface) => {
-	return await axios.put<ExtraInterface>(API, extra);
+export const updateExtra = async (gralLog: GralLogInterface) => {
+	return await axios.put<ExtraInterface>(API, gralLog);
 };
 
 export const getExtra = async (id: string) => {

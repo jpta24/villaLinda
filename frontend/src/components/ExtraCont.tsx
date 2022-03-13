@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import * as extraServices from '../Services/ExtraServices';
 import { ExtraInterface } from '../Services/ExtraInterface';
 import Extra from '../components/Extras';
+import User from '../components/User';
 
 const ExtraCont = () => {
+	const user = User();
+
 	const [extras, setExtras] = useState<ExtraInterface[]>([]);
 
 	const loadExtras = async () => {
@@ -21,7 +24,15 @@ const ExtraCont = () => {
 	) => {
 		e.preventDefault();
 
-		await extraServices.updateExtra(extra);
+		const newLog = {
+			user: user,
+			type: 'Income Extra',
+			description: {
+				extra: extra,
+			},
+		};
+
+		await extraServices.updateExtra(newLog);
 		loadExtras();
 	};
 

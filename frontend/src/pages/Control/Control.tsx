@@ -6,9 +6,10 @@ import { GralLogInterface } from '../../Services/GralLogInterface';
 import '../Control/style.scss';
 import Hab from '../../components/Hab';
 import ExtraCont from '../../components/ExtraCont';
+import User from '../../components/User';
 
 const Control = () => {
-	const user = 'Jean';
+	const user = User();
 
 	const [habs, setHabs] = useState<HabInterface[]>([]);
 
@@ -43,7 +44,7 @@ const Control = () => {
 
 		const newLog = {
 			user: user,
-			type: 'Income',
+			type: 'Income Hab',
 			description: {
 				hab: hab,
 			},
