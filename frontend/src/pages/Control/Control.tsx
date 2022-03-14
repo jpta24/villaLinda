@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as habServices from '../../Services/HabServices';
 import { HabInterface } from '../../Services/HabInterface';
-import { GralLogInterface } from '../../Services/GralLogInterface';
+import * as gralLogServices from '../../Services/GralLogServices';
+/*import { GralLogInterface } from '../../Services/GralLogInterface'; */
 import '../Control/style.scss';
 import Hab from '../../components/Hab';
 import ExtraCont from '../../components/ExtraCont';
@@ -50,6 +51,22 @@ const Control = () => {
 			},
 		};
 		await habServices.updateHab(newLog);
+		loadHabs();
+	};
+
+	const resetAll = async (
+		e: React.MouseEvent<HTMLElement>,
+		hab: HabInterface
+	) => {
+		e.preventDefault();
+		const newLog = {
+			user: user,
+			type: 'Reset All',
+			description: {
+				hab: hab,
+			},
+		};
+		await gralLogServices.updateAll(newLog);
 		loadHabs();
 	};
 
@@ -124,6 +141,15 @@ const Control = () => {
 							}}
 						>
 							Crear Extra
+						</button>
+						<button
+							type='button'
+							className=' col-md-2 mx-3 btn btn-danger'
+							onClick={(event: React.MouseEvent<HTMLElement>) => {
+								resetAll(event, habs[0]);
+							}}
+						>
+							Reset All
 						</button>
 					</div>
 				)}

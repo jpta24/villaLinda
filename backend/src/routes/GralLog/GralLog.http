@@ -1,3 +1,30 @@
 @api= http://localhost:5400/logs
 ### ruta inicial /videos
 GET {{api}}
+
+### borrar un video
+DELETE {{api}}/6229349bad55db400332f73c
+
+### actualizar un video
+PUT {{api}}
+Content-Type: application/json
+
+{
+  "user": "Jean",
+  "type": "Reset All",
+  "description": {
+    "hab": {
+      "_id": "62268d20d3588d3c5b581715",
+      "number": 1,
+      "status": "ResFrac",
+      "priceFraction": 30,
+      "priceFull": 50,
+      "hrIn": "2022-03-08T23:35:09.654Z",
+      "hrOut": null,
+      "hrMantto": null,
+      "timesRented": 0,
+      "updatedAt": "2022-03-08T23:35:09.666Z",
+      "createdAt": "2022-03-07T22:54:21.674Z"
+    }
+  }
+}

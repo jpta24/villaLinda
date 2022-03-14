@@ -7,9 +7,9 @@ router.get('/logs', gralLogCtrl.getGralLogs);
 
 router.delete('/logs/:id', gralLogCtrl.deleteGralLog);
 
-/* router.put('/logs', gralLogCtrl.updateGralLog);
+router.put('/logs', gralLogCtrl.updateAll);
 
-router.get('/logs/:id', gralLogCtrl.getGralLog);
+/* router.get('/logs/:id', gralLogCtrl.getGralLog);
 
 router.put('/logs/:id', gralLogCtrl.updateGralLogData);
 
