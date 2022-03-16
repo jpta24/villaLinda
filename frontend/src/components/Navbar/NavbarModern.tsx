@@ -23,7 +23,7 @@ const NavbarModern = () => {
 							Crear Extra
 						</NavDropdown.Item>
 					</NavDropdown>
-					<Nav.Link href='#features'>Features</Nav.Link>
+					<Nav.Link href='/logs'>Logs Generales</Nav.Link>
 					<Nav.Link href='#pricing'>Pricing</Nav.Link>
 				</Nav>
 			</Container>

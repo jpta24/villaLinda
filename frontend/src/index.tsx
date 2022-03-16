@@ -14,6 +14,7 @@ import reportWebVitals from './reportWebVitals';
 import HabForm from './components/HabForm';
 import ExtraForm from './components/ExtraForm';
 import NavbarModern from './components/Navbar/NavbarModern';
+import GralLogs from './components/GralLogs';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -27,6 +28,7 @@ ReactDOM.render(
 				<Route path='/admin-habs/create-hab' element={<HabForm />} />
 				<Route path='/admin-habs/create-extra' element={<ExtraForm />} />
 				<Route path='/admin-habs/extras/:id' element={<ExtraForm />} />
+				<Route path='/logs' element={<GralLogs />} />
 			</Routes>
 			<ToastContainer toastStyle={{ backgroundColor: 'black' }} />
 		</BrowserRouter>
