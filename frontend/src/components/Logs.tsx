@@ -7,9 +7,37 @@ interface Props {
 }
 
 const Logs = ({ eachLog }: Props) => {
+	const longDate = eachLog.createdAt
+		? new Date(eachLog.createdAt).toLocaleString('en-GB')
+		: null;
+
+	const functDate = (eachLog: GralLogInterface) => {
+		const dayDate = eachLog.createdAt
+			? new Date(eachLog.createdAt).getDay()
+			: null;
+
+		switch (dayDate) {
+			case 0:
+				return 'Dom';
+			case 1:
+				return 'Lun';
+			case 2:
+				return 'Mar';
+			case 3:
+				return 'Mie';
+			case 4:
+				return 'Jue';
+			case 5:
+				return 'Vie';
+			case 6:
+				return 'Sab';
+		}
+	};
+
 	return (
-		<div className='row logs'>
+		<div className='row logs text-center'>
 			<div className='col-2 th border'>
+				{functDate(eachLog)}{' '}
 				{eachLog.createdAt
 					? new Date(eachLog.createdAt).toLocaleString('en-GB')
 					: null}

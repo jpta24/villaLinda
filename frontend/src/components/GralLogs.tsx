@@ -27,7 +27,7 @@ const GralLogs = () => {
 				<h2 className='my-1 text-center'>LOGS GENERALES</h2>
 				<div className='mx-auto'>
 					<div className='mb-4 logs'>
-						<div className='row'>
+						<div className='row text-center'>
 							<div className='col-2 th border'>HORA</div>
 							<div className='col-1 th border'>USER</div>
 							<div className='col-2 th border'>TYPE</div>
