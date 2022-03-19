@@ -10,6 +10,10 @@ const outcomeSchema = new Schema(
 			type: Number,
 			trim: true,
 		},
+		description: {
+			type: String,
+			trim: true,
+		},
 	},
 	{
 		versionKey: false, //   versionKey: false,  quita el key de cada elemante

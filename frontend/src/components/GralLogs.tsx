@@ -8,7 +8,7 @@ import * as GralLogServices from '../Services/GralLogServices';
 import User from '../components/User';
 
 const GralLogs = () => {
-	const user = User();
+	/* const user = User(); */
 
 	const [gralLogs, setGralLogs] = useState<GralLogInterface[]>([]);
 

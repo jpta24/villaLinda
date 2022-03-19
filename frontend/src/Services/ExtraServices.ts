@@ -16,12 +16,15 @@ export const getExtra = async (id: string) => {
 	return await axios.get<ExtraInterface>(`${API}/${id}`);
 };
 
-export const updateExtraData = async (id: string, hab: ExtraInterface) => {
-	return await axios.put<ExtraInterface>(`${API}/${id}`, hab);
+export const updateExtraData = async (
+	id: string,
+	gralLog: GralLogInterface
+) => {
+	return await axios.put<ExtraInterface>(`${API}/${id}`, gralLog);
 };
 
-export const createExtra = async (hab: ExtraInterface) => {
-	return await axios.post(API, hab);
+export const createExtra = async (gralLog: GralLogInterface) => {
+	return await axios.post(API, gralLog);
 };
 
 export const deleteExtra = async (id: string) => {

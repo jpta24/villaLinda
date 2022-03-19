@@ -10,4 +10,5 @@ export interface HabInterface {
 	timesRented: number;
 	createdAt?: string | Date;
 	updatedAt?: string | Date;
+	reference?: string;
 }

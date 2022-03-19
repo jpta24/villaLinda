@@ -45,17 +45,19 @@ export const updateAll: RequestHandler = async (req, res) => {
 				);
 				console.log(extraUpdated);
 			}
-
+			const newLog = {
+				user: req.body.user,
+				type: 'Reset All',
+			};
+			const newLogUpdated = new GralLog(newLog);
+			const savedLog = await newLogUpdated.save();
 			return res.json('Reset');
 		}
-		const newLog = {
-			user: req.body.user,
-			type: 'Reset All',
-		};
-		console.log(newLog);
 
-		const newLogUpdated = new GralLog(newLog);
-		const savedLog = await newLogUpdated.save();
+		if (req.body.type === 'ResetAllLogs') {
+			const logs = await GralLog.remove();
+			return res.json(logs);
+		}
 	} catch (error) {
 		return res.json('Extra no encontrado').status(204);
 	}

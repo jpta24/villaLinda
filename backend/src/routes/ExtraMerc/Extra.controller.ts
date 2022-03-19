@@ -3,13 +3,20 @@ import ExtraMerc from './Extra';
 
 import GralLog from '../GralLog/GralLog';
 
+const createNewGralLog = async (gralLog: any) => {
+	const newLogUpdated = new GralLog(gralLog);
+	const savedLog = await newLogUpdated.save();
+};
+
 export const createExtra: RequestHandler = async (req, res) => {
-	const extraFound = await ExtraMerc.findOne({ name: req.body.name });
+	let info = req.body.description.extra;
+	const extraFound = await ExtraMerc.findOne({ name: info.name });
 	if (extraFound)
 		return res.status(301).json({ message: 'Este Extra ya existe' });
 
-	const extra = new ExtraMerc(req.body);
+	const extra = new ExtraMerc(info);
 	const savedExtra = await extra.save();
+	createNewGralLog(req.body);
 	res.json(savedExtra);
 };
 
@@ -29,8 +36,7 @@ export const updateExtra: RequestHandler = async (req, res) => {
 			new: true,
 		});
 
-		const newLogUpdated = new GralLog(req.body);
-		const savedLog = await newLogUpdated.save();
+		createNewGralLog(req.body);
 
 		return res.json(extraUpdated);
 	} catch (error) {
@@ -50,12 +56,14 @@ export const getExtra: RequestHandler = async (req, res) => {
 };
 
 export const updateExtraData: RequestHandler = async (req, res) => {
+	let info = req.body.description.extra;
 	try {
 		const extraUpdated = await ExtraMerc.findByIdAndUpdate(
 			req.params.id,
-			req.body,
+			info,
 			{ new: true }
 		);
+		createNewGralLog(req.body);
 		return res.json(extraUpdated);
 	} catch (error) {
 		return res.json({
@@ -78,21 +86,3 @@ export const deleteExtra: RequestHandler = async (req, res) => {
 		return res.json('Extra no encontrada').status(204);
 	}
 };
-
-/* export const getHab: RequestHandler = async (req, res) => {
-	try {
-		const habFound = await Habitaciones.findById(req.params.id);
-		return res.json(habFound);
-	} catch (error) {
-		return res.json('Extra no encontrada').status(204);
-	}
-}; */
-
-/* export const deleteHab: RequestHandler = async (req, res) => {
-	try {
-		const habFound = await Habitaciones.findByIdAndDelete(req.params.id);
-		return res.json(habFound);
-	} catch (error) {
-		return res.json('Habitación no encontrada').status(204);
-	}
-}; */

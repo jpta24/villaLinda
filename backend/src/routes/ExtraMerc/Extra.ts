@@ -21,6 +21,7 @@ const extraSchema = new Schema(
 			type: Number,
 			trim: true,
 		},
+		buy: Number,
 	},
 	{
 		versionKey: false, //   versionKey: false,  quita el key de cada elemante

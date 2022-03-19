@@ -6,4 +6,5 @@ export interface ExtraInterface {
 	priceSell: number;
 	createdAt?: string | Date;
 	updatedAt?: string | Date;
+	buy?: number;
 }

@@ -59,7 +59,7 @@ const Extras = ({ eachExtra, buyExtra }: Props) => {
 
 	const newQty = (extra: ExtraInterface, cantState: CantInterface) => {
 		extra.qty = extra.qty - cantState.cant;
-		console.log(extra);
+		extra.buy = cantState.cant;
 		return extra;
 	};
 

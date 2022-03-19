@@ -7,11 +7,15 @@ import * as extraServices from '../Services/ExtraServices';
 
 import DeleteExtraModal from '../components/Modals/DeleteExtra';
 
+import User from '../components/User';
+
 type InputChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
 type typeSubmit = FormEvent<HTMLFormElement>;
 
 const ExtraForm = () => {
+	const user = User();
+
 	const history = useNavigate();
 
 	const url = window.location.href;
@@ -28,6 +32,7 @@ const ExtraForm = () => {
 		qty: 0,
 		createdAt: new Date(),
 		updatedAt: new Date(),
+		buy: 0,
 	};
 
 	const [extraState, setExtraState] = useState<ExtraInterface>(initialState);
@@ -35,12 +40,20 @@ const ExtraForm = () => {
 	const handleSubmit = async (e: typeSubmit) => {
 		e.preventDefault();
 
+		const newLog = {
+			user: user,
+			type: 'Admin',
+			description: {
+				extra: extraState,
+			},
+		};
+
 		if (params) {
-			await extraServices.updateExtraData(params, extraState);
+			await extraServices.updateExtraData(params, newLog);
 			toast.warning('Extra Editado');
 		} else {
 			delete extraState._id;
-			await extraServices.createExtra(extraState);
+			await extraServices.createExtra(newLog);
 			extraState._id = '';
 			toast.success('Extra Creado');
 		}

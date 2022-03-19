@@ -38,6 +38,7 @@ const habSchema = new Schema(
 			type: Number,
 			trim: true,
 		},
+		reference: String,
 	},
 	{
 		versionKey: false, //   versionKey: false,  quita el key de cada elemante

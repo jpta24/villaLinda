@@ -1,3 +1,5 @@
+@import '../../styles/colors';
+
 h3,
 h2 {
 	color: azure;
@@ -143,4 +145,40 @@ p {
 .logs {
 	color: white !important;
 	font-size: small;
+}
+
+.th {
+	background-color: $color5;
+	color: $color3;
+	text-align: center;
+	justify-content: center;
+	flex-direction: column;
+	font: {
+		weight: bold;
+		size: 1em;
+	}
+}
+
+.r2 {
+	font-size: small !important ;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	background-color: white;
+	color: black;
+}
+
+.rIncome {
+	background-color: #6df57d;
+	color: black;
+}
+
+.rOutcome {
+	background-color: #ec6767;
+	color: black;
+}
+
+.rEdit {
+	background-color: #acbd3f;
+	color: rgb(9, 9, 9);
 }
