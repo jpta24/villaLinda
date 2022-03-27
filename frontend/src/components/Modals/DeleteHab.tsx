@@ -2,9 +2,18 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import * as habServices from '../..//Services/HabServices';
+import * as gralLogServices from '../..//Services/GralLogServices';
 import { toast } from 'react-toastify';
+import User from '../User';
+import { HabInterface } from '../../Services/HabInterface';
 
-const DeleteHabModal = () => {
+interface Props {
+	habState: HabInterface;
+}
+
+const DeleteHabModal = ({ habState }: Props) => {
+	const user = User();
+
 	const history = useNavigate();
 
 	const { id } = useParams();
@@ -17,10 +26,16 @@ const DeleteHabModal = () => {
 	const handleShow = () => setShow(true);
 
 	const deleteHab = async () => {
-		console.log(2);
-
 		if (params) {
+			const newLog = {
+				user: user,
+				type: 'Admin HabDelete',
+				description: {
+					hab: habState,
+				},
+			};
 			await habServices.deleteHab(params);
+			await gralLogServices.createLGralLog(newLog);
 			toast.warning('Habitación Eliminada');
 		}
 		history(`/admin-habs`);

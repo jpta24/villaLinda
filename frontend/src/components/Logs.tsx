@@ -83,10 +83,13 @@ const Logs = ({ eachLog }: Props) => {
 			<div className={`col-1 r2 border ${funtCssType(eachLog)}`}>
 				{eachLog.type === 'Reset All'
 					? null
-					: eachLog.description.hab
+					: eachLog.description.hab?.status === 'ResFull'
+					? '$ ' + eachLog.description.hab.priceFull
+					: eachLog.description.hab?.status === 'ResFrac'
 					? '$ ' + eachLog.description.hab.priceFraction
-					: eachLog.description.extra
-					? '$ ' + eachLog.description.extra.priceSell
+					: eachLog.description.extra?.buy
+					? '$ ' +
+					  eachLog.description.extra.priceSell * eachLog.description.extra.buy
 					: eachLog.description.outcome}
 			</div>
 			<div className={`col-3 r2 border ${funtCssType(eachLog)}`}>

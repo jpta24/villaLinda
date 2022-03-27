@@ -10,3 +10,7 @@ export const updateAll = async (gralLog: GralLogInterface) => {
 export const getGralLogs = async () => {
 	return await axios.get<GralLogInterface[]>(API);
 };
+
+export const createLGralLog = async (gralLog: GralLogInterface) => {
+	return await axios.post(API, gralLog);
+};

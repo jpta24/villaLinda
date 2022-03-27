@@ -62,3 +62,13 @@ export const updateAll: RequestHandler = async (req, res) => {
 		return res.json('Extra no encontrado').status(204);
 	}
 };
+
+export const createGralLog: RequestHandler = async (req, res) => {
+	const createNewGralLog = async (gralLog: any) => {
+		const newLogUpdated = new GralLog(gralLog);
+		const savedLog = await newLogUpdated.save();
+	};
+
+	createNewGralLog(req.body);
+	res.json(createNewGralLog);
+};

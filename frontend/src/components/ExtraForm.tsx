@@ -172,7 +172,7 @@ const ExtraForm = () => {
 			<div className='row'>
 				<div className='col-md-5 offset-md-3 my-1'>
 					<div className='form-group row my-1 mx-3 justify-content-center'>
-						{params ? <DeleteExtraModal /> : null}
+						{params ? <DeleteExtraModal extraState={extraState} /> : null}
 
 						<button
 							className='btn btn-warning col-sm-8 m-2'
