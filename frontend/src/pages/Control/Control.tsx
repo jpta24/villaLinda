@@ -49,6 +49,7 @@ const Control = () => {
 			description: {
 				hab: hab,
 			},
+			note: hab.timesRented,
 		};
 		await habServices.updateHab(newLog);
 		loadHabs();

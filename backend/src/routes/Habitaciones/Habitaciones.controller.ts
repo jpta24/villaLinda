@@ -3,12 +3,16 @@ import Habitaciones from './Habitaciones';
 import GralLog from '../GralLog/GralLog';
 
 export const createHab: RequestHandler = async (req, res) => {
-	const habFound = await Habitaciones.findOne({ number: req.body.number });
+	let info = req.body.description.hab;
+	const habFound = await Habitaciones.findOne({ number: info.number });
 	if (habFound)
 		return res.status(301).json({ message: 'Esta Habitación ya existe' });
 
-	const hab = new Habitaciones(req.body);
+	const hab = new Habitaciones(info);
 	const savedHabitaciones = await hab.save();
+
+	const newLogUpdated = new GralLog(req.body);
+	const savedLog = await newLogUpdated.save();
 
 	res.json(savedHabitaciones);
 };
@@ -34,11 +38,11 @@ export const updateHab: RequestHandler = async (req, res) => {
 		} else if (info.status === 'ResFrac' || info.status === 'ResFull') {
 			info.hrOut = new Date();
 			info.status = 'ResMantto';
-			info.timesRented++;
 		} else if (info.status === 'ResMantto') {
 			info.status = 'libre';
 			info.hrIn = null;
 			info.hrOut = null;
+			info.timesRented++;
 		}
 		const habUpdated = await Habitaciones.findByIdAndUpdate(info._id, info, {
 			new: true,
@@ -63,12 +67,16 @@ export const getHab: RequestHandler = async (req, res) => {
 };
 
 export const updateHabData: RequestHandler = async (req, res) => {
+	let info = req.body.description.hab;
 	try {
 		const habUpdated = await Habitaciones.findByIdAndUpdate(
 			req.params.id,
-			req.body,
+			info,
 			{ new: true }
 		);
+
+		const newLogUpdated = new GralLog(req.body);
+		const savedLog = await newLogUpdated.save();
 		return res.json(habUpdated);
 	} catch (error) {
 		return res.json({

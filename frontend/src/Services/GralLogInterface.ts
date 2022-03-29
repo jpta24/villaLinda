@@ -10,7 +10,7 @@ export interface GralLogInterface {
 		extra?: ExtraInterface;
 		outcome?: null;
 	};
-	note?: string;
+	note?: string | number;
 
 	createdAt?: string | Date;
 	updatedAt?: string | Date;

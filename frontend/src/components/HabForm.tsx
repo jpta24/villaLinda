@@ -7,12 +7,15 @@ import * as habServices from '../Services/HabServices';
 import { HabInterface } from '../Services/HabInterface';
 
 import DeleteHabModal from '../components/Modals/DeleteHab';
+import User from '../components/User';
 
 type InputChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
 type typeSubmit = FormEvent<HTMLFormElement>;
 
 const HabForm = () => {
+	const user = User();
+
 	const history = useNavigate();
 
 	const { id } = useParams();
@@ -52,11 +55,25 @@ const HabForm = () => {
 		e.preventDefault();
 
 		if (params) {
-			await habServices.updateHabData(params, habState);
+			const newLog = {
+				user: user,
+				type: 'Admin HabEdited',
+				description: {
+					hab: habState,
+				},
+			};
+			await habServices.updateHabData(params, newLog);
 			toast.warning('Habitación Editada');
 		} else {
 			delete habState._id;
-			await habServices.createHab(habState);
+			const newLog = {
+				user: user,
+				type: 'Admin HabCreated',
+				description: {
+					hab: habState,
+				},
+			};
+			await habServices.createHab(newLog);
 			habState._id = '';
 			toast.success('Habitación Creada');
 		}

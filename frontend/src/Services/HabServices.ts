@@ -18,12 +18,12 @@ export const getHab = async (id: string) => {
 	return await axios.get<HabInterface>(`${API}/${id}`);
 };
 
-export const updateHabData = async (id: string, hab: HabInterface) => {
-	return await axios.put<HabInterface>(`${API}/${id}`, hab);
+export const updateHabData = async (id: string, gralLog: GralLogInterface) => {
+	return await axios.put<HabInterface>(`${API}/${id}`, gralLog);
 };
 
-export const createHab = async (hab: HabInterface) => {
-	return await axios.post(API, hab);
+export const createHab = async (gralLog: GralLogInterface) => {
+	return await axios.post(API, gralLog);
 };
 
 export const deleteHab = async (id: string) => {

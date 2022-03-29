@@ -19,7 +19,7 @@ const gralLogSchema = new Schema(
 			outcome: { type: Schema.Types.Mixed, ref: Outcome },
 		},
 		note: {
-			type: String,
+			type: String || Number,
 			trim: true,
 		},
 	},
