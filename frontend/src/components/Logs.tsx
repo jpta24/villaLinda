@@ -1,6 +1,9 @@
 import React from 'react';
 
 import { GralLogInterface } from '../Services/GralLogInterface';
+import { formatDaySp } from '../helpers/formatDaySp';
+import { logsCssType } from '../helpers/functionsCsstypes';
+import { logDisplayPrice } from '../helpers/functions';
 
 interface Props {
 	eachLog: GralLogInterface;
@@ -12,57 +15,24 @@ const Logs = ({ eachLog }: Props) => {
 			? new Date(eachLog.createdAt).getDay()
 			: null;
 
-		switch (dayDate) {
-			case 0:
-				return 'Dom';
-			case 1:
-				return 'Lun';
-			case 2:
-				return 'Mar';
-			case 3:
-				return 'Mie';
-			case 4:
-				return 'Jue';
-			case 5:
-				return 'Vie';
-			case 6:
-				return 'Sab';
-		}
-	};
-	const funtCssType = (eachLog: GralLogInterface) => {
-		switch (eachLog.type) {
-			case 'Income Hab':
-				return 'rIncome';
-
-			case 'Income Extra':
-				return 'rIncome';
-
-			case 'Outcome':
-				return 'rOutcome';
-
-			case 'Edit':
-				return 'rEdit';
-
-			default:
-				return 'r2';
-		}
+		return formatDaySp(dayDate);
 	};
 
 	return (
 		<div className='row logs text-center'>
-			<div className={`col-2 r2 border ${funtCssType(eachLog)}`}>
+			<div className={`col-2 r2 border ${logsCssType(eachLog.type)}`}>
 				{functDate(eachLog)}{' '}
 				{eachLog.createdAt
 					? new Date(eachLog.createdAt).toLocaleString('en-GB')
 					: null}
 			</div>
-			<div className={`col-1 r2 border ${funtCssType(eachLog)}`}>
+			<div className={`col-1 r2 border ${logsCssType(eachLog.type)}`}>
 				{eachLog.user}
 			</div>
-			<div className={`col-2 r2 border ${funtCssType(eachLog)}`}>
+			<div className={`col-2 r2 border ${logsCssType(eachLog.type)}`}>
 				{eachLog.type}
 			</div>
-			<div className={`col-2 r2 border ${funtCssType(eachLog)}`}>
+			<div className={`col-2 r2 border ${logsCssType(eachLog.type)}`}>
 				{eachLog.type === 'Reset All'
 					? null
 					: eachLog.description.hab
@@ -71,7 +41,7 @@ const Logs = ({ eachLog }: Props) => {
 					? eachLog.description.extra.name
 					: eachLog.description.outcome}
 			</div>
-			<div className={`col-1 r2 border ${funtCssType(eachLog)}`}>
+			<div className={`col-1 r2 border ${logsCssType(eachLog.type)}`}>
 				{eachLog.type === 'Reset All'
 					? null
 					: eachLog.description.hab
@@ -80,19 +50,10 @@ const Logs = ({ eachLog }: Props) => {
 					? eachLog.description.extra.buy
 					: eachLog.description.outcome}
 			</div>
-			<div className={`col-1 r2 border ${funtCssType(eachLog)}`}>
-				{eachLog.type === 'Reset All' || eachLog.type.search('Admin') !== -1
-					? null
-					: eachLog.description.hab?.status === 'ResFrac'
-					? '$ ' + eachLog.description.hab.priceFraction
-					: eachLog.description.hab?.status === 'ResFull'
-					? '$ ' + eachLog.description.hab?.priceFull
-					: eachLog.description.extra?.buy
-					? '$ ' +
-					  eachLog.description.extra.priceSell * eachLog.description.extra.buy
-					: eachLog.description.outcome}
+			<div className={`col-1 r2 border ${logsCssType(eachLog.type)}`}>
+				{logDisplayPrice(eachLog)}
 			</div>
-			<div className={`col-3 r2 border ${funtCssType(eachLog)}`}>
+			<div className={`col-3 r2 border ${logsCssType(eachLog.type)}`}>
 				{eachLog.note}
 			</div>
 		</div>
